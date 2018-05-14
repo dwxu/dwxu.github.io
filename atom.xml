@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://www.dwxu.me/"/>
   <updated>2018-05-14T15:32:08.106Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://www.dwxu.me/</id>
   
   <author>
     <name>dwxu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/05/14/Hello-World/"/>
-    <id>http://yoursite.com/2018/05/14/Hello-World/</id>
+    <link href="http://www.dwxu.me/2018/05/14/Hello-World/"/>
+    <id>http://www.dwxu.me/2018/05/14/Hello-World/</id>
     <published>2018-05-14T13:31:51.000Z</published>
     <updated>2018-05-14T15:32:08.106Z</updated>
     
@@ -37,10 +37,10 @@
     
     </summary>
     
-      <category term="日记" scheme="http://yoursite.com/categories/%E6%97%A5%E8%AE%B0/"/>
+      <category term="日记" scheme="http://www.dwxu.me/categories/%E6%97%A5%E8%AE%B0/"/>
     
     
-      <category term="日记" scheme="http://yoursite.com/tags/%E6%97%A5%E8%AE%B0/"/>
+      <category term="日记" scheme="http://www.dwxu.me/tags/%E6%97%A5%E8%AE%B0/"/>
     
   </entry>
   
