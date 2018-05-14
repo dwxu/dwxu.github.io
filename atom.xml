@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Dongwu Xu</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-05-14T15:32:08.106Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>dwxu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/05/14/Hello-World/"/>
+    <id>http://yoursite.com/2018/05/14/Hello-World/</id>
+    <published>2018-05-14T13:31:51.000Z</published>
+    <updated>2018-05-14T15:32:08.106Z</updated>
+    
+    <content type="html"><![CDATA[<p>你好，世界！</p><p>不客观的说，自己也不算懒，但也不知道拖延了多久，总算是把个人博客的样子给整出来了。</p><p>基于 GitHub + Hexo 搭建，找了一套相对简洁的页面模板，稍微加以改造，便是现在这个样子，还算满意。</p><p>年后转到公司新的部门后，一直比较忙，期间也解决了一些大大小小的问题，在业务和技术方面也算有所收获，也一直想着找机会和时间总结并记录下来，于是乎又想起来久违的个人博客计划，花了两个晚上失落，过程比较顺利。</p><p>那么，之后要花更多的时间和精力，充实博客，充实自己！</p><p>晚安！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;你好，世界！&lt;/p&gt;
+&lt;p&gt;不客观的说，自己也不算懒，但也不知道拖延了多久，总算是把个人博客的样子给整出来了。&lt;/p&gt;
+&lt;p&gt;基于 GitHub + Hexo 搭建，找了一套相对简洁的页面模板，稍微加以改造，便是现在这个样子，还算满意。&lt;/p&gt;
+&lt;p&gt;年后转到公司新的部门后
+      
+    
+    </summary>
+    
+      <category term="日记" scheme="http://yoursite.com/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="日记" scheme="http://yoursite.com/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+</feed>
