@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dwxu.me/"/>
-  <updated>2018-05-14T15:32:08.106Z</updated>
+  <updated>2018-05-15T12:38:28.993Z</updated>
   <id>http://www.dwxu.me/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>各大搜索引擎来路referer头部及搜索关键字字段</title>
+    <link href="http://www.dwxu.me/2018/05/15/search-engine-referer/"/>
+    <id>http://www.dwxu.me/2018/05/15/search-engine-referer/</id>
+    <published>2018-05-15T12:25:00.000Z</published>
+    <updated>2018-05-15T12:38:28.993Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-百度搜索："><a href="#1-百度搜索：" class="headerlink" title="1. 百度搜索："></a>1. 百度搜索：</h4><ul><li><p>PC端：</p><ul><li><p>referer：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.baidu.com/link?url=gZRk-i0rKd2zEpXr6gLWgcMaB6gj49Qh0SRhVyeD1TG&amp;wd=&amp;eqid=e0224cf50000f590000000065ac98dee</span><br></pre></td></tr></table></figure></li><li><p>关键字字段：wd（无实际值）</p></li></ul></li><li><p>移动端：</p><ul><li><p>referer：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%401%2Csz%40320_1001%2Cta%40iphone_2_6.0_3_537/baiduid=EDC0F469B2C8C28ED6153A8DFE7B0F35/w=0_10_/t=iphone/l=1/tc?ref=www_iphone&amp;lid=9293408228010889187&amp;order=1&amp;fm=alop&amp;dict=-1&amp;tj=www_sitelink_normal_1_0_10_title&amp;wd=&amp;eqid=80f8d18b77481000100000005ac98e54&amp;w_qd=IlPT2AEptyoA_yjkTUugn4fHR5kW&amp;tcplug=1&amp;sec=28899&amp;di=6b8e30a65323dcbb&amp;bdenc=1&amp;tch=124.0.206.178.0.0&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IEQGG_8kJLDKv7JuV&amp;clk_info=%7B%22srcid%22%3A1539%2C%22tplname%22%3A%22www_sitelink_normal%22%2C%22t%22%3A1523158616510%2C%22xpath%22%3A%22div-a-h3-em%22%7D</span><br></pre></td></tr></table></figure></li><li><p>关键字字段：wd（无实际值）</p></li></ul></li></ul><h4 id="2-搜狗搜索（soso-搜索）："><a href="#2-搜狗搜索（soso-搜索）：" class="headerlink" title="2. 搜狗搜索（soso 搜索）："></a>2. 搜狗搜索（soso 搜索）：</h4><ul><li><p>PC端：</p><ul><li><p>referer：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.sogou.com/link?url=DSOYnZeCC_oowgX7OeX6FW4YafSeot-j</span><br></pre></td></tr></table></figure></li><li><p>关键字字段：无</p></li></ul></li><li><p>移动端：</p><ul><li><p>referer：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://m.sogou.com/web/searchList.jsp?uID=vU0WMAQthy-ORLar&amp;v=5&amp;from=index&amp;w=1274&amp;t=1523158841365&amp;s_t=1523158844479&amp;s_from=index&amp;keyword=51la%E7%BB%9F%E8%AE%A1&amp;pg=webSearchList&amp;sourceid=sugg&amp;sugoq=&amp;sugn=0&amp;suguuid=fa153a85-07bb-4afa-bb07-69d3775d9966&amp;sugsuv=AAHV9fA6HwAAAAqRK1G8bQ0A1wA%3D&amp;sugtime=1523158844484</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://wap.sogou.com/web/searchList.jsp?uID=vU0WMAQthy-ORLar&amp;v=5&amp;from=index&amp;w=1274&amp;t=1523158841365&amp;s_t=1523158844479&amp;s_from=index&amp;keyword=51la%E7%BB%9F%E8%AE%A1&amp;pg=webSearchList&amp;sourceid=sugg&amp;sugoq=&amp;sugn=0&amp;suguuid=fa153a85-07bb-4afa-bb07-69d3775d9966&amp;sugsuv=AAHV9fA6HwAAAAqRK1G8bQ0A1wA%3D&amp;sugtime=1523158844484</span><br></pre></td></tr></table></figure></li><li><p>关键字字段：keyword（有实际值）</p></li></ul></li></ul><h4 id="3-360-搜索（360好搜）："><a href="#3-360-搜索（360好搜）：" class="headerlink" title="3. 360 搜索（360好搜）："></a>3. 360 搜索（360好搜）：</h4><ul><li><p>PC端：</p><ul><li><p>referer：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.so.com/link?m=afEPOwxb%2BqdAts7rzNmmh%2F2cxMIM5669zqvLn1I5nPYjRlp8haa0nn%2FWJfYFNGvfzb4XdzUBb5wCnL2um08mnoi%2Bsge9ZjqTN</span><br></pre></td></tr></table></figure></li><li><p>referer 关键字字段：无</p></li></ul></li><li><p>移动端：</p><ul><li><p>referer：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://m.so.com/s?q=51la%E7%BB%9F%E8%AE%A1&amp;src=msearch_next_input&amp;sug_pos=&amp;sug=&amp;srcg=home_next</span><br></pre></td></tr></table></figure></li><li><p>关键字字段：q（有实际值）</p></li></ul></li></ul><h4 id="4-谷歌搜索："><a href="#4-谷歌搜索：" class="headerlink" title="4. 谷歌搜索："></a>4. 谷歌搜索：</h4><ul><li><p>PC端：</p><ul><li><p>referer：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.google.co.jp/（每个国家/地区的域名后缀不同，如 co.jp - 日本，hk - 香港，de - 德国）</span><br></pre></td></tr></table></figure></li><li><p>referer 关键字字段：无</p></li></ul></li><li><p>移动端：</p><ul><li><p>referer：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.google.com/</span><br></pre></td></tr></table></figure></li><li><p>关键字字段：无</p></li></ul></li></ul><h4 id="5-神马搜索："><a href="#5-神马搜索：" class="headerlink" title="5. 神马搜索："></a>5. 神马搜索：</h4><ul><li>PC端：无</li><li><p>移动端：</p><ul><li><p>referer：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://zm12.sm-tc.cn/?src=l4uLj8XQ0IiIiNHKztGTntA%3D&amp;uid=b64442e88b6decc4f6ade0bf131e6af0&amp;hid=0828a13d4a51cd539610a6c5a2e50f36&amp;pos=1&amp;cid=9&amp;time=1523160482592&amp;from=click&amp;restype=1&amp;pagetype=0400000000000004&amp;bu=web&amp;query=51la%E7%BB%9F%E8%AE%A1&amp;mode=&amp;v=1&amp;province=%E5%B9%BF%E4%B8%9C%E7%9C%81&amp;city=%E5%B9%BF%E5%B7%9E%E5%B8%82&amp;uc_param_str=dnntnwvepffrgibijbprsvdsdichei</span><br></pre></td></tr></table></figure></li><li><p>关键字字段：query（有实际值），host 为 zm12.sm-tc.cn</p></li></ul></li></ul><h4 id="6-BingLive（微软Bing搜索）："><a href="#6-BingLive（微软Bing搜索）：" class="headerlink" title="6. BingLive（微软Bing搜索）："></a>6. BingLive（微软Bing搜索）：</h4><ul><li><p>PC端：</p><ul><li><p>referer：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.bing.com/</span><br></pre></td></tr></table></figure></li><li><p>关键字字段：无</p></li></ul></li><li><p>移动端：</p><ul><li><p>referer：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.bing.com/</span><br></pre></td></tr></table></figure></li><li><p>关键字字段：无</p></li></ul></li></ul><h4 id="7-有道-网易搜索：目前仅为词典搜索"><a href="#7-有道-网易搜索：目前仅为词典搜索" class="headerlink" title="7. 有道/网易搜索：目前仅为词典搜索"></a>7. 有道/网易搜索：目前仅为词典搜索</h4>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;1-百度搜索：&quot;&gt;&lt;a href=&quot;#1-百度搜索：&quot; class=&quot;headerlink&quot; title=&quot;1. 百度搜索：&quot;&gt;&lt;/a&gt;1. 百度搜索：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;PC端：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;referer：&lt;/p&gt;
+&lt;figu
+      
+    
+    </summary>
+    
+      <category term="互联网" scheme="http://www.dwxu.me/categories/%E4%BA%92%E8%81%94%E7%BD%91/"/>
+    
+    
+      <category term="搜索引擎" scheme="http://www.dwxu.me/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
