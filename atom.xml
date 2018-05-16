@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dwxu.me/"/>
-  <updated>2018-05-15T12:38:28.993Z</updated>
+  <updated>2018-05-16T15:24:15.382Z</updated>
   <id>http://www.dwxu.me/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>高并发下多站点在线访问实时统计</title>
+    <link href="http://www.dwxu.me/2018/05/16/online-statistics/"/>
+    <id>http://www.dwxu.me/2018/05/16/online-statistics/</id>
+    <published>2018-05-16T15:20:09.000Z</published>
+    <updated>2018-05-16T15:24:15.382Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="一、业务背景"><a href="#一、业务背景" class="headerlink" title="一、业务背景"></a>一、业务背景</h3><ul><li>实时统计多个站点的在线独立访问情况；</li><li>统计的时间范围为 10/15/30 分钟；</li><li>所有站点每秒累计约 10w 的 pv；</li></ul><h3 id="二、解决思路"><a href="#二、解决思路" class="headerlink" title="二、解决思路"></a>二、解决思路</h3><ul><li>按客户端 IP+SessionId 区分独立访问；</li><li>将在线访问信息（站点ID、IP、Session Id、访问时间等）写入 Kafka 集群；</li><li>Storm(集群) 实时消费 Kafka 在线访问信息/消息，合并访问写入 Redis；</li><li>上层应用从 Redis 获取各站点 10/15/30 分钟内的独立访问数据进行计算并展示；</li></ul><h3 id="三、详细设计"><a href="#三、详细设计" class="headerlink" title="三、详细设计"></a>三、详细设计</h3><h4 id="1-redis-数据结构设计"><a href="#1-redis-数据结构设计" class="headerlink" title="1. redis 数据结构设计"></a>1. redis 数据结构设计</h4><ul><li>将每分钟的站点数据写入一个 Hash 集合（过期时间为 30 分钟），key 为 online:{comId}:{minute}，其中 {comId} 为站点ID，{minute} 为在线时间的分钟字段（0-59）；</li><li>集合下的元素结构为：field - {ip}:{sessionId}（独立访问），value - 该独立访问一分钟内的请求/响应次数，通过 hincrby 指令递增；</li></ul><h4 id="2-数据统计"><a href="#2-数据统计" class="headerlink" title="2. 数据统计"></a>2. 数据统计</h4><ul><li>统计范围为当前 10/15/30 分钟内；</li><li>通过站点ID及当前时间从 redis 中读取该站点 30 分钟内的数据集合，例如站点ID为1，查询时间为 9点33分钟，则从 redis 读取 online:1:33 - online:1:3 的数据集合；</li><li>合并数据集合的 key（{ip}:{sessionId}），即去重，即可得到指定时间范围内的在线访问数；</li></ul><h4 id="3-说明"><a href="#3-说明" class="headerlink" title="3. 说明"></a>3. 说明</h4><ul><li>数据写入 Redis 频繁，需要优先考虑写入耗时和内存的问题，因此通过 hincrby 和 expired 这两个时间复杂度为 O(1) 的指令来快速写入在线数据；</li><li>每个站点的数据集合过期时间为 30 分钟（根据请求时间计算过期的时间戳），因此一个站点最多同时存在 30 个数据集合，过期的集合由 Redis 自动清理，无需再自行清理；</li><li>每个集合的有效数据实际为 field 的部分，记录每分钟的独立访问，接口在获取数据进行统计时，直接取出 field 的 Set 集合进行自动合并即可；</li></ul><h3 id="四、线上情况"><a href="#四、线上情况" class="headerlink" title="四、线上情况"></a>四、线上情况</h3><ul><li>Redis 单机/单实例；</li><li>30分钟内活跃的站点约 1.5w 个，两个小时内监控 Redis，redis 总内存占用稳定在 5.5G 以下（较上线此统计前多占用 1G 内存），数据集合能够正常过期并被 redis 清理；</li><li>应用 0.3s 内完成统计访问最频繁/数据量最大的站点的各时段内在线访问情况，当然跟服务器性能比较好也有关系；</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;一、业务背景&quot;&gt;&lt;a href=&quot;#一、业务背景&quot; class=&quot;headerlink&quot; title=&quot;一、业务背景&quot;&gt;&lt;/a&gt;一、业务背景&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;实时统计多个站点的在线独立访问情况；&lt;/li&gt;
+&lt;li&gt;统计的时间范围为 10/15/30 分钟
+      
+    
+    </summary>
+    
+      <category term="解决方案" scheme="http://www.dwxu.me/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+      <category term="实时统计" scheme="http://www.dwxu.me/tags/%E5%AE%9E%E6%97%B6%E7%BB%9F%E8%AE%A1/"/>
+    
+      <category term="Redis" scheme="http://www.dwxu.me/tags/Redis/"/>
+    
+  </entry>
   
   <entry>
     <title>各大搜索引擎来路referer头部及搜索关键字字段</title>

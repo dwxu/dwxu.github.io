@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://www.dwxu.me/2018/05/16/online-statistics/</loc>
+    <lastmod>2018-05-16T15:24:15.382Z</lastmod>
+    <data>
+        <display>
+        <title>高并发下多站点在线访问实时统计</title>
+        <pubTime>2018-05-16T15:20:09.000Z</pubTime>
+        
+        <tag>实时统计</tag>
+         
+        <tag>Redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="解决方案" url="http://www.dwxu.me/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dwxu.me/2018/05/15/search-engine-referer/</loc>
     <lastmod>2018-05-15T12:38:28.993Z</lastmod>
     <data>
