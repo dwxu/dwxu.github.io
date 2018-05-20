@@ -17,7 +17,7 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>高并发下多站点在线访问实时统计 | Dongwu Xu</title>
+  <title>高并发下多站点在线访问实时统计 | Dongwu Xu&#39;s blog</title>
   <meta name="description" content="一、业务背景 实时统计多个站点的在线独立访问情况； 统计的时间范围为 10/15/30 分钟； 所有站点每秒累计约 10w 的 pv；  二、解决思路 按客户端 IP+SessionId 区分独立访问； 将在线访问信息（站点ID、IP、Session Id、访问时间等）写入 Kafka 集群； Storm(集群) 实时消费 Kafka 在线访问信息/消息，合并访问写入 Redis； 上层应用从 R">
 <meta name="keywords" content="实时统计,Redis">
 <meta property="og:type" content="article">

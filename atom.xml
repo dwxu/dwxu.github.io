@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Dongwu Xu</title>
   
-  
+  <subtitle>Blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dwxu.me/"/>
@@ -10,7 +10,7 @@
   <id>http://www.dwxu.me/</id>
   
   <author>
-    <name>dwxu</name>
+    <name>Dongwu Xu</name>
     
   </author>
   
