@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dwxu.me/"/>
-  <updated>2018-05-16T15:24:15.382Z</updated>
+  <updated>2018-05-20T15:26:09.348Z</updated>
   <id>http://www.dwxu.me/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java泛型与类型擦除</title>
+    <link href="http://www.dwxu.me/2018/05/19/java-generics/"/>
+    <id>http://www.dwxu.me/2018/05/19/java-generics/</id>
+    <published>2018-05-19T09:26:40.000Z</published>
+    <updated>2018-05-20T15:26:09.348Z</updated>
+    
+    <content type="html"><![CDATA[<p>&emsp;&emsp;泛型是 JDK1.5 的一项新增特性，本质是参数化类型的应用，即所操作的数据类型被指定为一个参数，可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口和泛型方法：</p><ul><li><p>泛型接口：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通过类实现泛型接口时指定泛型 K 和 V 的具体类型，如 java.util 包中的 Map&lt;K, V&gt; ；</span><br></pre></td></tr></table></figure></li><li><p>泛型类：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">编译器无法知道 K 和 V 的具体类型，只有运行时才真正根据类型来构造和分配内存，如 java.util 包中的 HashMap&lt;K,V&gt; ；</span><br></pre></td></tr></table></figure></li><li><p>泛型方法：泛型方法返回值前加一个<k>、<v>等来声明这是一个泛型方法，如</v></k></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class HashMap&lt;K,V&gt; extends AbstractMap&lt;K,V&gt;</span><br><span class="line">    implements Map&lt;K,V&gt;, Cloneable, Serializable &#123;</span><br><span class="line">    ...</span><br><span class="line">    public V get(Object key) &#123;</span><br><span class="line">        Node&lt;K,V&gt; e;</span><br><span class="line">        return (e = getNode(hash(key), key)) == null ? null : e.value;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    public V put(K key, V value) &#123;</span><br><span class="line">        return putVal(hash(key), key, value, false, true);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><p>&emsp;&emsp;实际上，Java中 的泛型与 C++/C# 的中泛型实现不同，只在程序源码中存在，在编译后的字节码文件中，就已经替换为原生类型（也称为裸类型，如 Map&lt;K, V&gt; 即为 Map），并且在相应的地方插入了强制类型转换的代码，如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">Map&lt;String, String&gt; data = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">data.put(<span class="string">"foo"</span>, <span class="string">"foo"</span>);</span><br><span class="line">data.put(<span class="string">"bar"</span>, <span class="string">"bar"</span>);</span><br><span class="line">data.put(<span class="string">"baz"</span>, <span class="string">"baz"</span>);</span><br><span class="line">System.out.println(data.get(<span class="string">"foo"</span>));</span><br><span class="line">System.out.println(data.get(<span class="string">"bar"</span>));</span><br><span class="line">System.out.println(data.get(<span class="string">"baz"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>  编译为 Class 文件后，反编译后：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] paramArrayOfString)</span> </span>&#123;</span><br><span class="line">    HashMap localHashMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">    localHashMap.put(<span class="string">"foo"</span>, <span class="string">"foo"</span>);</span><br><span class="line">    localHashMap.put(<span class="string">"bar"</span>, <span class="string">"bar"</span>);</span><br><span class="line">    localHashMap.put(<span class="string">"baz"</span>, <span class="string">"baz"</span>);</span><br><span class="line">    System.out.println((String)localHashMap.get(<span class="string">"foo"</span>));</span><br><span class="line">    System.out.println((String)localHashMap.get(<span class="string">"bar"</span>));</span><br><span class="line">    System.out.println((String)localHashMap.get(<span class="string">"baz"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>  这种类型擦除的方式实现的泛型支持，只是作为一种语法糖来方便程序员的代码开发，提高效率和语法的严谨性，减少编码出错的机会，但并没有提供底层实质性的功能改进，因此 Java 的泛型支持实现一直存在争议和批评，例如由于 List<string> 和 List<integer> 擦除后是同一类型（List），无法实现重载（实际上，两个方法如果返回值类型不同，使用 Sun JDK 1.6 的 javac 也能编译成功）。</integer></string></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&amp;emsp;&amp;emsp;泛型是 JDK1.5 的一项新增特性，本质是参数化类型的应用，即所操作的数据类型被指定为一个参数，可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口和泛型方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;泛型接口：&lt;/p&gt;
+&lt;figure class=&quot;
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://www.dwxu.me/categories/Java/"/>
+    
+    
+      <category term="泛型" scheme="http://www.dwxu.me/tags/%E6%B3%9B%E5%9E%8B/"/>
+    
+      <category term="语法糖" scheme="http://www.dwxu.me/tags/%E8%AF%AD%E6%B3%95%E7%B3%96/"/>
+    
+  </entry>
   
   <entry>
     <title>高并发下多站点在线访问实时统计</title>
