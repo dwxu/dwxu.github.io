@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dwxu.me/"/>
-  <updated>2018-05-20T15:26:09.348Z</updated>
+  <updated>2018-05-21T14:09:21.737Z</updated>
   <id>http://www.dwxu.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>同一手机号注册多个 Gmail 邮箱</title>
+    <link href="http://www.dwxu.me/2018/05/21/gmail-register/"/>
+    <id>http://www.dwxu.me/2018/05/21/gmail-register/</id>
+    <published>2018-05-21T13:37:18.000Z</published>
+    <updated>2018-05-21T14:09:21.737Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于之前注册的 Gmail 邮箱地址包含个人信息（十分建议申请邮箱地址时慎用个人信息，如生日等）并且不太正式，因此想另外申请一个邮箱地址，然而目前一个手机号注册只能注册一个账号，无法直接重新申请：<br><img src="/2018/05/21/gmail-register/gmail1.png" alt="提示号码无法用于进行验证"><br><br><br>尝试了多种方式进行注册后，发现可以使用 <strong>Chrome 浏览器</strong> 注册成功：</p><ul><li><p>打开 <strong>设置</strong> 页面，点击 <strong>登录 CHROME</strong>，在弹出来的对话框中，点击 <strong>更多选项</strong>，选择 <strong>创建新账号</strong>：<br><img src="/2018/05/21/gmail-register/gmail2.png" alt="提示号码无法用于进行验证"></p></li><li><p>按提示填写 <strong>姓氏</strong> 和 <strong>姓名</strong> 后，进入发送验证码页面，<strong>国家/地区</strong> 选择 <strong>HK</strong>，电话号码前面增加 <strong>+86</strong>：<br><img src="/2018/05/21/gmail-register/gmail3.png" alt="提示号码无法用于进行验证"></p></li><li><p>点击 <strong>下一步</strong>，即可收到验证码短信：<br><img src="/2018/05/21/gmail-register/gmail4.jpeg" alt="提示号码无法用于进行验证"></p></li><li><p>之后根据提示填写邮箱地址完成注册<br><br></p></li></ul><p>旧的邮箱可能绑定过其他网站或者系统，也需要查看相关邮件，可以使用新的邮箱代收旧邮箱的邮件，在 Gmail 邮箱界面 设置 - 账号和导入 - 查收其他账号的邮件 中进行设置，具体操作可点击 <a href="https://support.google.com/mail/answer/21289?hl=zh-Hans" target="_blank" rel="noopener">了解详情</a> 查看。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;由于之前注册的 Gmail 邮箱地址包含个人信息（十分建议申请邮箱地址时慎用个人信息，如生日等）并且不太正式，因此想另外申请一个邮箱地址，然而目前一个手机号注册只能注册一个账号，无法直接重新申请：&lt;br&gt;&lt;img src=&quot;/2018/05/21/gmail-registe
+      
+    
+    </summary>
+    
+      <category term="备忘" scheme="http://www.dwxu.me/categories/%E5%A4%87%E5%BF%98/"/>
+    
+    
+      <category term="Gmail" scheme="http://www.dwxu.me/tags/Gmail/"/>
+    
+  </entry>
   
   <entry>
     <title>Java泛型与类型擦除</title>
