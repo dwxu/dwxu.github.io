@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Dongwu Xu">
 <meta property="og:description" content="毫无疑问，自动装箱和自动拆箱是 Java 语言里使用最多的语法糖。以 Integer 为例：12345public static void main(String[] args) &amp;#123;    Integer foo = 1;    List&amp;lt;Integer&amp;gt; bar = Arrays.asList(1, 2, 3, 4);    Integer[] baz = &amp;#123;1,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-22T14:41:46.832Z">
+<meta property="og:updated_time" content="2018-05-22T14:47:11.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java自动装箱和拆箱">
 <meta name="twitter:description" content="毫无疑问，自动装箱和自动拆箱是 Java 语言里使用最多的语法糖。以 Integer 为例：12345public static void main(String[] args) &amp;#123;    Integer foo = 1;    List&amp;lt;Integer&amp;gt; bar = Arrays.asList(1, 2, 3, 4);    Integer[] baz = &amp;#123;1,">
@@ -374,7 +374,7 @@
 <p>JDK1.5 之后自动进行装箱和拆箱：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer foo = <span class="number">10</span>; <span class="comment">// 自动装箱</span></span><br><span class="line"><span class="keyword">int</span> bar = foo; <span class="comment">// 自动拆箱</span></span><br><span class="line">System.out.println(foo--); <span class="comment">// 输出10, 计算时的自动拆箱</span></span><br></pre></td></tr></table></figure></p>
 <p><br><br>另外，观察以下程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Integer a = <span class="number">95</span>;</span><br><span class="line">    Integer b = <span class="number">95</span>;</span><br><span class="line">    System.out.println(<span class="string">"a == b: "</span> + (a == b));</span><br><span class="line"></span><br><span class="line">    Integer c = <span class="number">295</span>;</span><br><span class="line">    Integer d = <span class="number">295</span>;</span><br><span class="line">    System.out.println(<span class="string">"c == d: "</span> + (c == d));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>输出结果为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a == b: <span class="keyword">true</span></span><br><span class="line">c == d: <span class="keyword">false</span></span><br></pre></td></tr></table></figure></p>
-<p>原因是在自动装箱的时候，[-128,127] 内的值被装箱成 Integer 对象存在内存中（Cache），可以被重用，“ == ” 比较的是对象的内存地址，因此 a 和 b 实际上是同一个对象，比较结果自然是 true，而超出以上范围的数值装箱后的对象并不会被重用，那么就相当于创建两个对象，比较的结果自然是false。<br><br><br>每种基本数据类型都有对应的包装类，如下：</p>
+<p>原因是在自动装箱的时候，[-128, 127] 内的值被装箱成 Integer 对象存在内存中（Cache），可以被重用，“ == ” 比较的是对象的内存地址，因此 a 和 b 实际上是同一个对象，比较结果自然是 true，而超出以上范围的数值装箱后的对象并不会被重用，那么就相当于创建两个对象，比较的结果自然是false。<br><br><br>每种基本数据类型都有对应的包装类，如下：</p>
 <table>
 <thead>
 <tr>
