@@ -3,6 +3,48 @@
 
 
     
+  <url>
+    <loc>http://www.dwxu.me/2018/05/22/java-boxing/</loc>
+    <lastmod>2018-05-22T14:41:46.832Z</lastmod>
+    <data>
+        <display>
+        <title>Java自动装箱和拆箱</title>
+        <pubTime>2018-05-22T14:10:15.000Z</pubTime>
+        
+        <tag>语法糖</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://www.dwxu.me/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dwxu.me/2018/05/19/java-generics/</loc>
+    <lastmod>2018-05-22T14:38:41.421Z</lastmod>
+    <data>
+        <display>
+        <title>Java泛型与类型擦除</title>
+        <pubTime>2018-05-19T09:26:40.000Z</pubTime>
+        
+        <tag>语法糖</tag>
+         
+        <tag>泛型</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://www.dwxu.me/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://www.dwxu.me/2018/05/21/gmail-register/</loc>
@@ -18,28 +60,6 @@
            
              
               <breadCrumb title="备忘" url="http://www.dwxu.me/categories/%E5%A4%87%E5%BF%98/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dwxu.me/2018/05/19/java-generics/</loc>
-    <lastmod>2018-05-20T15:26:09.348Z</lastmod>
-    <data>
-        <display>
-        <title>Java泛型与类型擦除</title>
-        <pubTime>2018-05-19T09:26:40.000Z</pubTime>
-        
-        <tag>泛型</tag>
-         
-        <tag>语法糖</tag>
-         
-         
-           
-             
-              <breadCrumb title="Java" url="http://www.dwxu.me/categories/Java/"/>
           
         </display>
     </data>

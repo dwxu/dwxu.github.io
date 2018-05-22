@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>高并发下多站点在线访问实时统计 | Dongwu Xu - Blog</title>
-  <meta name="description" content="一、业务背景 实时统计多个站点的在线独立访问情况； 统计的时间范围为 10/15/30 分钟； 所有站点每秒累计约 10w 的 pv；  二、解决思路 按客户端 IP+SessionId 区分独立访问； 将在线访问信息（站点ID、IP、Session Id、访问时间等）写入 Kafka 集群； Storm(集群) 实时消费 Kafka 在线访问信息/消息，合并访问写入 Redis； 上层应用从 R">
-<meta name="keywords" content="实时统计,Redis">
+  <title>Java自动装箱和拆箱 | Dongwu Xu - Blog</title>
+  <meta name="description" content="毫无疑问，自动装箱和自动拆箱是 Java 语言里使用最多的语法糖。以 Integer 为例：12345public static void main(String[] args) &amp;#123;    Integer foo = 1;    List&amp;lt;Integer&amp;gt; bar = Arrays.asList(1, 2, 3, 4);    Integer[] baz = &amp;#123;1,">
+<meta name="keywords" content="语法糖">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高并发下多站点在线访问实时统计">
-<meta property="og:url" content="http://www.dwxu.me/2018/05/16/online-statistics/index.html">
+<meta property="og:title" content="Java自动装箱和拆箱">
+<meta property="og:url" content="http://www.dwxu.me/2018/05/22/java-boxing/index.html">
 <meta property="og:site_name" content="Dongwu Xu">
-<meta property="og:description" content="一、业务背景 实时统计多个站点的在线独立访问情况； 统计的时间范围为 10/15/30 分钟； 所有站点每秒累计约 10w 的 pv；  二、解决思路 按客户端 IP+SessionId 区分独立访问； 将在线访问信息（站点ID、IP、Session Id、访问时间等）写入 Kafka 集群； Storm(集群) 实时消费 Kafka 在线访问信息/消息，合并访问写入 Redis； 上层应用从 R">
+<meta property="og:description" content="毫无疑问，自动装箱和自动拆箱是 Java 语言里使用最多的语法糖。以 Integer 为例：12345public static void main(String[] args) &amp;#123;    Integer foo = 1;    List&amp;lt;Integer&amp;gt; bar = Arrays.asList(1, 2, 3, 4);    Integer[] baz = &amp;#123;1,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-16T15:24:15.382Z">
+<meta property="og:updated_time" content="2018-05-22T14:41:46.832Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高并发下多站点在线访问实时统计">
-<meta name="twitter:description" content="一、业务背景 实时统计多个站点的在线独立访问情况； 统计的时间范围为 10/15/30 分钟； 所有站点每秒累计约 10w 的 pv；  二、解决思路 按客户端 IP+SessionId 区分独立访问； 将在线访问信息（站点ID、IP、Session Id、访问时间等）写入 Kafka 集群； Storm(集群) 实时消费 Kafka 在线访问信息/消息，合并访问写入 Redis； 上层应用从 R">
+<meta name="twitter:title" content="Java自动装箱和拆箱">
+<meta name="twitter:description" content="毫无疑问，自动装箱和自动拆箱是 Java 语言里使用最多的语法糖。以 Integer 为例：12345public static void main(String[] args) &amp;#123;    Integer foo = 1;    List&amp;lt;Integer&amp;gt; bar = Arrays.asList(1, 2, 3, 4);    Integer[] baz = &amp;#123;1,">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://www.dwxu.me/2018/05/16/online-statistics/index.html">
+  <link rel="canonical" href="http://www.dwxu.me/2018/05/22/java-boxing/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Dongwu Xu" type="application/atom+xml">
   
@@ -328,14 +328,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-online-statistics" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-java-boxing" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      高并发下多站点在线访问实时统计
+      Java自动装箱和拆箱
     </h1>
   
 
@@ -343,61 +343,80 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2018/05/16/online-statistics/" class="article-date">
-	  <time datetime="2018-05-16T15:20:09.000Z" itemprop="datePublished">2018-05-16</time>
+	<a href="/2018/05/22/java-boxing/" class="article-date">
+	  <time datetime="2018-05-22T14:10:15.000Z" itemprop="datePublished">2018-05-22</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/解决方案/">解决方案</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Redis/">Redis</a>, <a class="article-tag-link" href="/tags/实时统计/">实时统计</a>
+	<a class="article-tag-link" href="/tags/语法糖/">语法糖</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/05/16/online-statistics/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/05/22/java-boxing/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <h3 id="一、业务背景"><a href="#一、业务背景" class="headerlink" title="一、业务背景"></a>一、业务背景</h3><ul>
-<li>实时统计多个站点的在线独立访问情况；</li>
-<li>统计的时间范围为 10/15/30 分钟；</li>
-<li>所有站点每秒累计约 10w 的 pv；</li>
-</ul>
-<h3 id="二、解决思路"><a href="#二、解决思路" class="headerlink" title="二、解决思路"></a>二、解决思路</h3><ul>
-<li>按客户端 IP+SessionId 区分独立访问；</li>
-<li>将在线访问信息（站点ID、IP、Session Id、访问时间等）写入 Kafka 集群；</li>
-<li>Storm(集群) 实时消费 Kafka 在线访问信息/消息，合并访问写入 Redis；</li>
-<li>上层应用从 Redis 获取各站点 10/15/30 分钟内的独立访问数据进行计算并展示；</li>
-</ul>
-<h3 id="三、详细设计"><a href="#三、详细设计" class="headerlink" title="三、详细设计"></a>三、详细设计</h3><h4 id="1-redis-数据结构设计"><a href="#1-redis-数据结构设计" class="headerlink" title="1. redis 数据结构设计"></a>1. redis 数据结构设计</h4><ul>
-<li>将每分钟的站点数据写入一个 Hash 集合（过期时间为 30 分钟），key 为 online:{comId}:{minute}，其中 {comId} 为站点ID，{minute} 为在线时间的分钟字段（0-59）；</li>
-<li>集合下的元素结构为：field - {ip}:{sessionId}（独立访问），value - 该独立访问一分钟内的请求/响应次数，通过 hincrby 指令递增；</li>
-</ul>
-<h4 id="2-数据统计"><a href="#2-数据统计" class="headerlink" title="2. 数据统计"></a>2. 数据统计</h4><ul>
-<li>统计范围为当前 10/15/30 分钟内；</li>
-<li>通过站点ID及当前时间从 redis 中读取该站点 30 分钟内的数据集合，例如站点ID为1，查询时间为 9点33分钟，则从 redis 读取 online:1:33 - online:1:3 的数据集合；</li>
-<li>合并数据集合的 key（{ip}:{sessionId}），即去重，即可得到指定时间范围内的在线访问数；</li>
-</ul>
-<h4 id="3-说明"><a href="#3-说明" class="headerlink" title="3. 说明"></a>3. 说明</h4><ul>
-<li>数据写入 Redis 频繁，需要优先考虑写入耗时和内存的问题，因此通过 hincrby 和 expired 这两个时间复杂度为 O(1) 的指令来快速写入在线数据；</li>
-<li>每个站点的数据集合过期时间为 30 分钟（根据请求时间计算过期的时间戳），因此一个站点最多同时存在 30 个数据集合，过期的集合由 Redis 自动清理，无需再自行清理；</li>
-<li>每个集合的有效数据实际为 field 的部分，记录每分钟的独立访问，接口在获取数据进行统计时，直接取出 field 的 Set 集合进行自动合并即可；</li>
-</ul>
-<h3 id="四、线上情况"><a href="#四、线上情况" class="headerlink" title="四、线上情况"></a>四、线上情况</h3><ul>
-<li>Redis 单机/单实例；</li>
-<li>30分钟内活跃的站点约 1.5w 个，两个小时内监控 Redis，redis 总内存占用稳定在 5.5G 以下（较上线此统计前多占用 1G 内存），数据集合能够正常过期并被 redis 清理；</li>
-<li>应用 0.3s 内完成统计访问最频繁/数据量最大的站点的各时段内在线访问情况，当然跟服务器性能比较好也有关系；</li>
-</ul>
+        <p>毫无疑问，自动装箱和自动拆箱是 Java 语言里使用最多的语法糖。以 Integer 为例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Integer foo = <span class="number">1</span>;</span><br><span class="line">    List&lt;Integer&gt; bar = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">    Integer[] baz = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译为 Class 文件后反编译：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] var0)</span> </span>&#123;</span><br><span class="line">    Integer var1 = Integer.valueOf(<span class="number">1</span>);</span><br><span class="line">    List var2 = Arrays.asList(Integer.valueOf(<span class="number">1</span>), Integer.valueOf(<span class="number">2</span>), Integer.valueOf(<span class="number">3</span>), Integer.valueOf(<span class="number">4</span>));</span><br><span class="line">    Integer[] var10000 = <span class="keyword">new</span> Integer[]&#123;Integer.valueOf(<span class="number">1</span>), Integer.valueOf(<span class="number">2</span>), Integer.valueOf(<span class="number">3</span>), Integer.valueOf(<span class="number">4</span>)&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br><br>自动装箱和拆箱是 JDK1.5 的新特性，之前都是手动进行包装类的装箱和拆箱：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> foo = <span class="number">1</span>; <span class="comment">// 基本数据类型int</span></span><br><span class="line">Integer bar = <span class="keyword">new</span> Integer(foo); <span class="comment">// 手动装箱</span></span><br><span class="line"><span class="keyword">int</span> baz = bar.intValue(); <span class="comment">// 手动拆箱</span></span><br></pre></td></tr></table></figure></p>
+<p>JDK1.5 之后自动进行装箱和拆箱：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer foo = <span class="number">10</span>; <span class="comment">// 自动装箱</span></span><br><span class="line"><span class="keyword">int</span> bar = foo; <span class="comment">// 自动拆箱</span></span><br><span class="line">System.out.println(foo--); <span class="comment">// 输出10, 计算时的自动拆箱</span></span><br></pre></td></tr></table></figure></p>
+<p><br><br>另外，观察以下程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Integer a = <span class="number">95</span>;</span><br><span class="line">    Integer b = <span class="number">95</span>;</span><br><span class="line">    System.out.println(<span class="string">"a == b: "</span> + (a == b));</span><br><span class="line"></span><br><span class="line">    Integer c = <span class="number">295</span>;</span><br><span class="line">    Integer d = <span class="number">295</span>;</span><br><span class="line">    System.out.println(<span class="string">"c == d: "</span> + (c == d));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a == b: <span class="keyword">true</span></span><br><span class="line">c == d: <span class="keyword">false</span></span><br></pre></td></tr></table></figure></p>
+<p>原因是在自动装箱的时候，[-128,127] 内的值被装箱成 Integer 对象存在内存中（Cache），可以被重用，“ == ” 比较的是对象的内存地址，因此 a 和 b 实际上是同一个对象，比较结果自然是 true，而超出以上范围的数值装箱后的对象并不会被重用，那么就相当于创建两个对象，比较的结果自然是false。<br><br><br>每种基本数据类型都有对应的包装类，如下：</p>
+<table>
+<thead>
+<tr>
+<th>基本数据类型</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -427,13 +446,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2018/05/19/java-generics/" title="Java泛型与类型擦除"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2018/05/15/search-engine-referer/" title="各大搜索引擎来路referer头部及搜索关键字字段"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2018/05/21/gmail-register/" title="同一手机号注册多个 Gmail 邮箱"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

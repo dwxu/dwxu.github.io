@@ -17,19 +17,19 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Java泛型与类型擦除 | Dongwu Xu&#39;s blog</title>
-  <meta name="description" content="&amp;emsp;&amp;emsp;泛型是 JDK1.5 的一项新增特性，本质是参数化类型的应用，即所操作的数据类型被指定为一个参数，可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口和泛型方法：  泛型接口： 1通过类实现泛型接口时指定泛型 K 和 V 的具体类型，如 java.util 包中的 Map&amp;lt;K, V&amp;gt; ；  泛型类： 1编译器无法知道 K 和 V 的具体类型，只有运行时才真正">
-<meta name="keywords" content="泛型,语法糖">
+  <title>Java泛型与类型擦除 | Dongwu Xu - Blog</title>
+  <meta name="description" content="泛型是 JDK1.5 的一项新增特性，本质是参数化类型的应用，即所操作的数据类型被指定为一个参数，可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口和泛型方法：  泛型接口： 1通过类实现泛型接口时指定泛型 K 和 V 的具体类型，如 java.util 包中的 Map&amp;lt;K, V&amp;gt; ；  泛型类： 1编译器无法知道 K 和 V 的具体类型，只有运行时才真正根据类型来构造和分配内存">
+<meta name="keywords" content="语法糖,泛型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java泛型与类型擦除">
 <meta property="og:url" content="http://www.dwxu.me/2018/05/19/java-generics/index.html">
 <meta property="og:site_name" content="Dongwu Xu">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;泛型是 JDK1.5 的一项新增特性，本质是参数化类型的应用，即所操作的数据类型被指定为一个参数，可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口和泛型方法：  泛型接口： 1通过类实现泛型接口时指定泛型 K 和 V 的具体类型，如 java.util 包中的 Map&amp;lt;K, V&amp;gt; ；  泛型类： 1编译器无法知道 K 和 V 的具体类型，只有运行时才真正">
+<meta property="og:description" content="泛型是 JDK1.5 的一项新增特性，本质是参数化类型的应用，即所操作的数据类型被指定为一个参数，可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口和泛型方法：  泛型接口： 1通过类实现泛型接口时指定泛型 K 和 V 的具体类型，如 java.util 包中的 Map&amp;lt;K, V&amp;gt; ；  泛型类： 1编译器无法知道 K 和 V 的具体类型，只有运行时才真正根据类型来构造和分配内存">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-20T15:26:09.348Z">
+<meta property="og:updated_time" content="2018-05-22T14:38:41.421Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java泛型与类型擦除">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;泛型是 JDK1.5 的一项新增特性，本质是参数化类型的应用，即所操作的数据类型被指定为一个参数，可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口和泛型方法：  泛型接口： 1通过类实现泛型接口时指定泛型 K 和 V 的具体类型，如 java.util 包中的 Map&amp;lt;K, V&amp;gt; ；  泛型类： 1编译器无法知道 K 和 V 的具体类型，只有运行时才真正">
+<meta name="twitter:description" content="泛型是 JDK1.5 的一项新增特性，本质是参数化类型的应用，即所操作的数据类型被指定为一个参数，可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口和泛型方法：  泛型接口： 1通过类实现泛型接口时指定泛型 K 和 V 的具体类型，如 java.util 包中的 Map&amp;lt;K, V&amp;gt; ；  泛型类： 1编译器无法知道 K 和 V 的具体类型，只有运行时才真正根据类型来构造和分配内存">
   <!-- Canonical links -->
   <link rel="canonical" href="http://www.dwxu.me/2018/05/19/java-generics/index.html">
   
@@ -199,7 +199,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/备忘/">备忘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/解决方案/">解决方案</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/互联网/">互联网</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/备忘/">备忘</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/解决方案/">解决方案</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -209,7 +209,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gmail/">Gmail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实时统计/">实时统计</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索引擎/">搜索引擎</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/泛型/">泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法糖/">语法糖</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gmail/">Gmail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实时统计/">实时统计</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索引擎/">搜索引擎</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/泛型/">泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法糖/">语法糖</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -219,7 +219,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/Gmail/" style="font-size: 13px;">Gmail</a> <a href="/tags/Redis/" style="font-size: 13px;">Redis</a> <a href="/tags/实时统计/" style="font-size: 13px;">实时统计</a> <a href="/tags/搜索引擎/" style="font-size: 13px;">搜索引擎</a> <a href="/tags/日记/" style="font-size: 13px;">日记</a> <a href="/tags/泛型/" style="font-size: 13px;">泛型</a> <a href="/tags/语法糖/" style="font-size: 13px;">语法糖</a>
+      <a href="/tags/Gmail/" style="font-size: 13px;">Gmail</a> <a href="/tags/Redis/" style="font-size: 13px;">Redis</a> <a href="/tags/实时统计/" style="font-size: 13px;">实时统计</a> <a href="/tags/搜索引擎/" style="font-size: 13px;">搜索引擎</a> <a href="/tags/日记/" style="font-size: 13px;">日记</a> <a href="/tags/泛型/" style="font-size: 13px;">泛型</a> <a href="/tags/语法糖/" style="font-size: 14px;">语法糖</a>
     </div>
   </div>
 
@@ -228,7 +228,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -240,6 +240,21 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Java/">Java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/05/22/java-boxing/" class="title">Java自动装箱和拆箱</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-05-22T14:10:15.000Z" itemprop="datePublished">2018-05-22</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -300,21 +315,6 @@
             </div>
           </li>
           
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/日记/">日记</a>
-              </p>
-              <p class="item-title">
-                <a href="/2018/05/14/Hello-World/" class="title">Hello World</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2018-05-14T13:31:51.000Z" itemprop="datePublished">2018-05-14</time>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -368,7 +368,7 @@
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <p>&emsp;&emsp;泛型是 JDK1.5 的一项新增特性，本质是参数化类型的应用，即所操作的数据类型被指定为一个参数，可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口和泛型方法：</p>
+        <p>泛型是 JDK1.5 的一项新增特性，本质是参数化类型的应用，即所操作的数据类型被指定为一个参数，可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口和泛型方法：</p>
 <ul>
 <li><p>泛型接口：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通过类实现泛型接口时指定泛型 K 和 V 的具体类型，如 java.util 包中的 Map&lt;K, V&gt; ；</span><br></pre></td></tr></table></figure>
@@ -380,9 +380,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class HashMap&lt;K,V&gt; extends AbstractMap&lt;K,V&gt;</span><br><span class="line">    implements Map&lt;K,V&gt;, Cloneable, Serializable &#123;</span><br><span class="line">    ...</span><br><span class="line">    public V get(Object key) &#123;</span><br><span class="line">        Node&lt;K,V&gt; e;</span><br><span class="line">        return (e = getNode(hash(key), key)) == null ? null : e.value;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    public V put(K key, V value) &#123;</span><br><span class="line">        return putVal(hash(key), key, value, false, true);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>&emsp;&emsp;实际上，Java中 的泛型与 C++/C# 的中泛型实现不同，只在程序源码中存在，在编译后的字节码文件中，就已经替换为原生类型（也称为裸类型，如 Map&lt;K, V&gt; 即为 Map），并且在相应的地方插入了强制类型转换的代码，如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Map&lt;String, String&gt; data = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">	data.put(<span class="string">"foo"</span>, <span class="string">"foo"</span>);</span><br><span class="line">	data.put(<span class="string">"bar"</span>, <span class="string">"bar"</span>);</span><br><span class="line">	data.put(<span class="string">"baz"</span>, <span class="string">"baz"</span>);</span><br><span class="line">	System.out.println(data.get(<span class="string">"foo"</span>));</span><br><span class="line">	System.out.println(data.get(<span class="string">"bar"</span>));</span><br><span class="line">	System.out.println(data.get(<span class="string">"baz"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>  编译为 Class 文件后，反编译后：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] paramArrayOfString)</span> </span>&#123;</span><br><span class="line">    HashMap localHashMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">    localHashMap.put(<span class="string">"foo"</span>, <span class="string">"foo"</span>);</span><br><span class="line">    localHashMap.put(<span class="string">"bar"</span>, <span class="string">"bar"</span>);</span><br><span class="line">    localHashMap.put(<span class="string">"baz"</span>, <span class="string">"baz"</span>);</span><br><span class="line">    System.out.println((String)localHashMap.get(<span class="string">"foo"</span>));</span><br><span class="line">    System.out.println((String)localHashMap.get(<span class="string">"bar"</span>));</span><br><span class="line">    System.out.println((String)localHashMap.get(<span class="string">"baz"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>  这种类型擦除的方式实现的泛型支持，只是作为一种语法糖来方便程序员的代码开发，提高效率和语法的严谨性，减少编码出错的机会，但并没有提供底层实质性的功能改进，因此 Java 的泛型支持实现一直存在争议和批评，例如由于 List<string> 和 List<integer> 擦除后是同一类型（List），无法实现重载（实际上，两个方法如果返回值类型不同，使用 Sun JDK 1.6 的 javac 也能编译成功）。</integer></string></p>
+<p><br></p>
+<p>实际上，Java中 的泛型与 C++/C# 的中泛型实现不同，只在程序源码中存在，在编译后的字节码文件中，就已经替换为原生类型（也称为裸类型，如 Map&lt;K, V&gt; 即为 Map），并且在相应的地方插入了强制类型转换的代码，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	Map&lt;String, String&gt; data = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">	data.put(<span class="string">"foo"</span>, <span class="string">"foo"</span>);</span><br><span class="line">	data.put(<span class="string">"bar"</span>, <span class="string">"bar"</span>);</span><br><span class="line">	data.put(<span class="string">"baz"</span>, <span class="string">"baz"</span>);</span><br><span class="line">	System.out.println(data.get(<span class="string">"foo"</span>));</span><br><span class="line">	System.out.println(data.get(<span class="string">"bar"</span>));</span><br><span class="line">	System.out.println(data.get(<span class="string">"baz"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译为 Class 文件后反编译：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] paramArrayOfString)</span> </span>&#123;</span><br><span class="line">    HashMap localHashMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">    localHashMap.put(<span class="string">"foo"</span>, <span class="string">"foo"</span>);</span><br><span class="line">    localHashMap.put(<span class="string">"bar"</span>, <span class="string">"bar"</span>);</span><br><span class="line">    localHashMap.put(<span class="string">"baz"</span>, <span class="string">"baz"</span>);</span><br><span class="line">    System.out.println((String)localHashMap.get(<span class="string">"foo"</span>));</span><br><span class="line">    System.out.println((String)localHashMap.get(<span class="string">"bar"</span>));</span><br><span class="line">    System.out.println((String)localHashMap.get(<span class="string">"baz"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<p>这种类型擦除的方式实现的泛型支持，只是作为一种语法糖来方便程序员的代码开发，提高效率和语法的严谨性，减少编码出错的机会，但并没有提供底层实质性的功能改进，因此 Java 的泛型支持实现一直存在争议和批评，例如由于 List<string> 和 List<integer> 擦除后是同一类型（List），无法实现重载（实际上，两个方法如果返回值类型不同，使用 Sun JDK 1.6 的 javac 也能编译成功）。</integer></string></p>
 
       
     </div>
