@@ -18,19 +18,19 @@
   
   
   <title>使用 iostat 命令监视磁盘设备活动情况 | Dongwu Xu - Blog</title>
-  <meta name="description" content="最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，最近发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。 1. 使用说明 查看 CPU 和磁盘 I/O 相关的统计信息 指令格式： 123456[51la_dev@db2 ~]$ iostat --helpUsage: iosta">
+  <meta name="description" content="最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。 1. 使用说明 查看 CPU 和磁盘 I/O 相关的统计信息 指令格式： 123456[51la_dev@db2 ~]$ iostat --helpUsage: iostat">
 <meta name="keywords" content="性能">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 iostat 命令监视磁盘设备活动情况">
 <meta property="og:url" content="http://www.dwxu.me/2018/05/24/linux-iostat/index.html">
 <meta property="og:site_name" content="Dongwu Xu">
-<meta property="og:description" content="最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，最近发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。 1. 使用说明 查看 CPU 和磁盘 I/O 相关的统计信息 指令格式： 123456[51la_dev@db2 ~]$ iostat --helpUsage: iosta">
+<meta property="og:description" content="最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。 1. 使用说明 查看 CPU 和磁盘 I/O 相关的统计信息 指令格式： 123456[51la_dev@db2 ~]$ iostat --helpUsage: iostat">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.dwxu.me/2018/05/24/linux-iostat/iostat.png">
-<meta property="og:updated_time" content="2018-05-24T14:50:57.604Z">
+<meta property="og:updated_time" content="2018-05-24T14:57:04.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 iostat 命令监视磁盘设备活动情况">
-<meta name="twitter:description" content="最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，最近发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。 1. 使用说明 查看 CPU 和磁盘 I/O 相关的统计信息 指令格式： 123456[51la_dev@db2 ~]$ iostat --helpUsage: iosta">
+<meta name="twitter:description" content="最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。 1. 使用说明 查看 CPU 和磁盘 I/O 相关的统计信息 指令格式： 123456[51la_dev@db2 ~]$ iostat --helpUsage: iostat">
 <meta name="twitter:image" content="http://www.dwxu.me/2018/05/24/linux-iostat/iostat.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://www.dwxu.me/2018/05/24/linux-iostat/index.html">
@@ -370,7 +370,7 @@
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <p>最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，最近发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。</p>
+        <p>最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。</p>
 <h3 id="1-使用说明"><a href="#1-使用说明" class="headerlink" title="1. 使用说明"></a>1. 使用说明</h3><ul>
 <li>查看 CPU 和磁盘 I/O 相关的统计信息</li>
 <li><p>指令格式：</p>

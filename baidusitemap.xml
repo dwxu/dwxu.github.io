@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.dwxu.me/2018/05/24/linux-iostat/</loc>
+    <lastmod>2018-05-24T14:57:04.835Z</lastmod>
+    <data>
+        <display>
+        <title>使用 iostat 命令监视磁盘设备活动情况</title>
+        <pubTime>2018-05-24T14:10:10.000Z</pubTime>
+        
+        <tag>性能</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.dwxu.me/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dwxu.me/2018/05/21/gmail-register/</loc>
     <lastmod>2018-05-24T14:54:28.964Z</lastmod>
     <data>
@@ -17,26 +37,6 @@
            
              
               <breadCrumb title="备忘" url="http://www.dwxu.me/categories/%E5%A4%87%E5%BF%98/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dwxu.me/2018/05/24/linux-iostat/</loc>
-    <lastmod>2018-05-24T14:50:57.604Z</lastmod>
-    <data>
-        <display>
-        <title>使用 iostat 命令监视磁盘设备活动情况</title>
-        <pubTime>2018-05-24T14:10:10.000Z</pubTime>
-        
-        <tag>性能</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://www.dwxu.me/categories/Linux/"/>
           
         </display>
     </data>
