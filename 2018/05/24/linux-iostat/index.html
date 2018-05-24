@@ -17,16 +17,23 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>标签: Redis | Dongwu Xu - Blog</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Dongwu Xu">
-<meta property="og:url" content="http://www.dwxu.me/tags/Redis/index.html">
+  <title>使用 iostat 命令监视磁盘设备活动情况 | Dongwu Xu - Blog</title>
+  <meta name="description" content="最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，最近发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。 1. 使用说明 查看 CPU 和磁盘 I/O 相关的统计信息 指令格式： 123456[51la_dev@db2 ~]$ iostat --helpUsage: iosta">
+<meta name="keywords" content="性能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 iostat 命令监视磁盘设备活动情况">
+<meta property="og:url" content="http://www.dwxu.me/2018/05/24/linux-iostat/index.html">
 <meta property="og:site_name" content="Dongwu Xu">
+<meta property="og:description" content="最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，最近发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。 1. 使用说明 查看 CPU 和磁盘 I/O 相关的统计信息 指令格式： 123456[51la_dev@db2 ~]$ iostat --helpUsage: iosta">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.dwxu.me/2018/05/24/linux-iostat/iostat.png">
+<meta property="og:updated_time" content="2018-05-24T14:50:57.604Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dongwu Xu">
+<meta name="twitter:title" content="使用 iostat 命令监视磁盘设备活动情况">
+<meta name="twitter:description" content="最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，最近发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。 1. 使用说明 查看 CPU 和磁盘 I/O 相关的统计信息 指令格式： 123456[51la_dev@db2 ~]$ iostat --helpUsage: iosta">
+<meta name="twitter:image" content="http://www.dwxu.me/2018/05/24/linux-iostat/iostat.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://www.dwxu.me/tags/Redis/index.html">
+  <link rel="canonical" href="http://www.dwxu.me/2018/05/24/linux-iostat/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Dongwu Xu" type="application/atom+xml">
   
@@ -320,68 +327,147 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="content article article-tags post-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">标签: Redis</h1>
-      <p class="text-muted hidden-xs">共 1 篇文章</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/tags">All</a></li>
-          
-          <li><a href="/tags/日记/">日记</a></li>
-          
-          <li><a href="/tags/Gmail/">Gmail</a></li>
-          
-          <li><a href="/tags/语法糖/">语法糖</a></li>
-          
-          <li><a href="/tags/泛型/">泛型</a></li>
-          
-          <li><a href="/tags/性能/">性能</a></li>
-          
-          <li><a href="/tags/实时统计/">实时统计</a></li>
-          
-          <li><a href="/tags/Redis/">Redis</a></li>
-          
-          <li><a href="/tags/搜索引擎/">搜索引擎</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="row">
-        
-<div class="col-md-6">
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-linux-iostat" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-<article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="panel-body">
-     <div class="article-meta">
-       <time datetime="2018-05-16T15:20:09.000Z" itemprop="datePublished">2018-05-16</time>
-     </div>
-     <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2018/05/16/online-statistics/">高并发下多站点在线访问实时统计</a>
-     </h3>
-   </div>
-   
-   <div class="panel-footer">
-     
-      <a href="/tags/实时统计/" class="label label-default mb">实时统计</a>
-     
-      <a href="/tags/Redis/" class="label label-default mb">Redis</a>
-     
-     
-   </div>
-   
-</article>
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用 iostat 命令监视磁盘设备活动情况
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/05/24/linux-iostat/" class="article-date">
+	  <time datetime="2018-05-24T14:10:10.000Z" itemprop="datePublished">2018-05-24</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/性能/">性能</a>
+  </span>
 
 
-</div>
+        
 
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/05/24/linux-iostat/#comments" class="article-comment-link">评论</a></span>
+        
       </div>
     </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，最近发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。</p>
+<h3 id="1-使用说明"><a href="#1-使用说明" class="headerlink" title="1. 使用说明"></a>1. 使用说明</h3><ul>
+<li>查看 CPU 和磁盘 I/O 相关的统计信息</li>
+<li><p>指令格式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[51la_dev@db2 ~]$ iostat --help</span><br><span class="line">Usage: iostat [ options ] [ &lt;interval&gt; [ &lt;count&gt; ] ]</span><br><span class="line">Options are:</span><br><span class="line">[ -c ] [ -d ] [ -N ] [ -n ] [ -h ] [ -k | -m ] [ -t ] [ -V ] [ -x ] [ -y ] [ -z ]</span><br><span class="line">[ -j &#123; ID | LABEL | PATH | UUID | ... &#125; [ &lt;device&gt; [...] | ALL ] ]</span><br><span class="line">[ &lt;device&gt; [...] | ALL ] [ -p [ &lt;device&gt; [,...] | ALL ] ]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主要参数说明：</p>
+<ul>
+<li>-c：显示CPU使用情况</li>
+<li>-d：显示磁盘使用情况</li>
+<li>-k：以 KB 为单位显示</li>
+<li>-m：以 M 为单位显示</li>
+<li>-N：显示磁盘阵列(LVM) 信息</li>
+<li>-n：显示NFS 使用情况</li>
+<li>-p[磁盘]：显示磁盘和分区的情况</li>
+<li>-t：显示终端和CPU的信息</li>
+<li>-x：显示详细信息</li>
+<li>-V：显示版本信息</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-使用实例"><a href="#2-使用实例" class="headerlink" title="2. 使用实例"></a>2. 使用实例</h3><p><div align="center"><br><img src="/2018/05/24/linux-iostat/iostat.png" alt="iostat"><br></div></p>
+<ul>
+<li><p>输出信息说明：</p>
+<ul>
+<li>首行：系统/服务器相关信息</li>
+<li>avg-cpu：cpu 状态信息</li>
+<li>rrqm/s：每秒合并读操作的次数</li>
+<li>wrqm/s：每秒合并写操作的次数</li>
+<li>r/s：每秒读操作的次数</li>
+<li>w/s： 每秒写操作的次数</li>
+<li>rMB/s：每秒读取的MB字节数</li>
+<li>wMB/s：每秒写入的MB字节数</li>
+<li>avgrq-sz：平均每个 I/O 操作的扇区数，即所有请求的平均大小，以扇区（512字节）为单位</li>
+<li>avgqu-sz：平均 I/O 请求队列长度</li>
+<li>await：平均每个 I/O 所需要的时间，包括在队列等待的时间，也包括磁盘控制器处理本次请求的有效时间（毫秒）</li>
+<li>r_wait：每个读操作平均所需要的时间，不仅包括硬盘设备读操作的时间，也包括在内核队列中的时间（毫秒）</li>
+<li>w_wait：每个写操平均所需要的时间，不仅包括硬盘设备写操作的时间，也包括在队列中等待的时间（毫秒）</li>
+<li>svctm：平均每次设备I/O操作的服务时间 (毫秒)</li>
+<li>%util：工作时间或者繁忙时间占总时间的百分比</li>
+</ul>
+</li>
+<li><p>简单分析以上截图：</p>
+<ul>
+<li>服务器有 48 个逻辑 CPU，而且很空闲（93.36% 的空闲），性能是比较强</li>
+<li>sde 磁盘/设备的写操作十分频繁（每秒超过 1000 次），读操作平均等待时间超过 1000 毫秒，尤其是 %util 到达 100%（没有空闲时间），很容易（或已经）导致性能受限，成为相关任务的瓶颈。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      
+
+    </div>
   </article>
-   
+  
+    
+  <section id="comments">
+  	
+       
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNjQ5MC8xMzAyNQ==">
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+      
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2018/05/22/java-boxing/" title="Java自动装箱和拆箱"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -431,6 +517,28 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     
     
     
+        
+
+
+    
+    
+        
+    
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
     
     
 

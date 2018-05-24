@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dwxu.me/"/>
-  <updated>2018-05-22T14:47:11.607Z</updated>
+  <updated>2018-05-24T14:50:57.604Z</updated>
   <id>http://www.dwxu.me/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 iostat 命令监视磁盘设备活动情况</title>
+    <link href="http://www.dwxu.me/2018/05/24/linux-iostat/"/>
+    <id>http://www.dwxu.me/2018/05/24/linux-iostat/</id>
+    <published>2018-05-24T14:10:10.000Z</published>
+    <updated>2018-05-24T14:50:57.604Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，最近发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。</p><h3 id="1-使用说明"><a href="#1-使用说明" class="headerlink" title="1. 使用说明"></a>1. 使用说明</h3><ul><li>查看 CPU 和磁盘 I/O 相关的统计信息</li><li><p>指令格式：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[51la_dev@db2 ~]$ iostat --help</span><br><span class="line">Usage: iostat [ options ] [ &lt;interval&gt; [ &lt;count&gt; ] ]</span><br><span class="line">Options are:</span><br><span class="line">[ -c ] [ -d ] [ -N ] [ -n ] [ -h ] [ -k | -m ] [ -t ] [ -V ] [ -x ] [ -y ] [ -z ]</span><br><span class="line">[ -j &#123; ID | LABEL | PATH | UUID | ... &#125; [ &lt;device&gt; [...] | ALL ] ]</span><br><span class="line">[ &lt;device&gt; [...] | ALL ] [ -p [ &lt;device&gt; [,...] | ALL ] ]</span><br></pre></td></tr></table></figure></li><li><p>主要参数说明：</p><ul><li>-c：显示CPU使用情况</li><li>-d：显示磁盘使用情况</li><li>-k：以 KB 为单位显示</li><li>-m：以 M 为单位显示</li><li>-N：显示磁盘阵列(LVM) 信息</li><li>-n：显示NFS 使用情况</li><li>-p[磁盘]：显示磁盘和分区的情况</li><li>-t：显示终端和CPU的信息</li><li>-x：显示详细信息</li><li>-V：显示版本信息</li></ul></li></ul><h3 id="2-使用实例"><a href="#2-使用实例" class="headerlink" title="2. 使用实例"></a>2. 使用实例</h3><p><div align="center"><br><img src="/2018/05/24/linux-iostat/iostat.png" alt="iostat"><br></div></p><ul><li><p>输出信息说明：</p><ul><li>首行：系统/服务器相关信息</li><li>avg-cpu：cpu 状态信息</li><li>rrqm/s：每秒合并读操作的次数</li><li>wrqm/s：每秒合并写操作的次数</li><li>r/s：每秒读操作的次数</li><li>w/s： 每秒写操作的次数</li><li>rMB/s：每秒读取的MB字节数</li><li>wMB/s：每秒写入的MB字节数</li><li>avgrq-sz：平均每个 I/O 操作的扇区数，即所有请求的平均大小，以扇区（512字节）为单位</li><li>avgqu-sz：平均 I/O 请求队列长度</li><li>await：平均每个 I/O 所需要的时间，包括在队列等待的时间，也包括磁盘控制器处理本次请求的有效时间（毫秒）</li><li>r_wait：每个读操作平均所需要的时间，不仅包括硬盘设备读操作的时间，也包括在内核队列中的时间（毫秒）</li><li>w_wait：每个写操平均所需要的时间，不仅包括硬盘设备写操作的时间，也包括在队列中等待的时间（毫秒）</li><li>svctm：平均每次设备I/O操作的服务时间 (毫秒)</li><li>%util：工作时间或者繁忙时间占总时间的百分比</li></ul></li><li><p>简单分析以上截图：</p><ul><li>服务器有 48 个逻辑 CPU，而且很空闲（93.36% 的空闲），性能是比较强</li><li>sde 磁盘/设备的写操作十分频繁（每秒超过 1000 次），读操作平均等待时间超过 1000 毫秒，尤其是 %util 到达 100%（没有空闲时间），很容易（或已经）导致性能受限，成为相关任务的瓶颈。</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，最近发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。&lt;/p&gt;
+&lt;h3 id=&quot;1-使用说明&quot;&gt;&lt;a 
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.dwxu.me/categories/Linux/"/>
+    
+    
+      <category term="性能" scheme="http://www.dwxu.me/tags/%E6%80%A7%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Java自动装箱和拆箱</title>
@@ -46,7 +72,7 @@
     <link href="http://www.dwxu.me/2018/05/21/gmail-register/"/>
     <id>http://www.dwxu.me/2018/05/21/gmail-register/</id>
     <published>2018-05-21T13:37:18.000Z</published>
-    <updated>2018-05-21T14:09:21.737Z</updated>
+    <updated>2018-05-24T14:54:28.964Z</updated>
     
     <content type="html"><![CDATA[<p>由于之前注册的 Gmail 邮箱地址包含个人信息（十分建议申请邮箱地址时慎用个人信息，如生日等）并且不太正式，因此想另外申请一个邮箱地址，然而目前一个手机号注册只能注册一个账号，无法直接重新申请：<br><img src="/2018/05/21/gmail-register/gmail1.png" alt="提示号码无法用于进行验证"><br><br><br>尝试了多种方式进行注册后，发现可以使用 <strong>Chrome 浏览器</strong> 注册成功：</p><ul><li><p>打开 <strong>设置</strong> 页面，点击 <strong>登录 CHROME</strong>，在弹出来的对话框中，点击 <strong>更多选项</strong>，选择 <strong>创建新账号</strong>：<br><img src="/2018/05/21/gmail-register/gmail2.png" alt="提示号码无法用于进行验证"></p></li><li><p>按提示填写 <strong>姓氏</strong> 和 <strong>姓名</strong> 后，进入发送验证码页面，<strong>国家/地区</strong> 选择 <strong>HK</strong>，电话号码前面增加 <strong>+86</strong>：<br><img src="/2018/05/21/gmail-register/gmail3.png" alt="提示号码无法用于进行验证"></p></li><li><p>点击 <strong>下一步</strong>，即可收到验证码短信：<br><img src="/2018/05/21/gmail-register/gmail4.jpeg" alt="提示号码无法用于进行验证"></p></li><li><p>之后根据提示填写邮箱地址完成注册<br><br></p></li></ul><p>旧的邮箱可能绑定过其他网站或者系统，也需要查看相关邮件，可以使用新的邮箱代收旧邮箱的邮件，在 Gmail 邮箱界面 设置 - 账号和导入 - 查收其他账号的邮件 中进行设置，具体操作可点击 <a href="https://support.google.com/mail/answer/21289?hl=zh-Hans" target="_blank" rel="noopener">了解详情</a> 查看。</p>]]></content>
     
