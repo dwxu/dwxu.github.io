@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dwxu.me/"/>
-  <updated>2018-05-24T14:57:04.835Z</updated>
+  <updated>2018-05-27T02:35:41.206Z</updated>
   <id>http://www.dwxu.me/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>使用 iostat 命令监视磁盘设备活动情况</title>
+    <title>Linux系统端口范围限制</title>
+    <link href="http://www.dwxu.me/2018/05/27/linux-port/"/>
+    <id>http://www.dwxu.me/2018/05/27/linux-port/</id>
+    <published>2018-05-27T01:36:19.000Z</published>
+    <updated>2018-05-27T02:35:41.206Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近参与的项目中，使用 Apche Storm 实时消费/处理 Kafka 消息，但提交执行 Topology 时，经常发现启动（各个工作节点正常工作）很久，查看工作节点的相关日志（${STORM_HOME}/logs/workers-artifacts/ 目录下），经常发现有大量以下错误日志在滚动输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018-05-24 15:30:00.453 o.a.s.m.n.Client [ERROR] connection attempt 26 to Netty-Client-cdh5/xxx.xxx.xxx.xxx:6714 failed: java.net.ConnectException: Connection refused: cdh5/xxx.xxx.xxx.xxx:6714</span><br></pre></td></tr></table></figure></p><p>从日志初步看，是工作进程尝试与其他工作进程进行通信建立连接时被拒绝，很大可能是工作进程还没有启动完成（监听相关端口，如上述日志中 cdh5 的 6714 端口）。<br><br><br>正常来说，程序监听空闲端口启动是很快的，除非是端口被占用了，一直在等待端口释放。我们的 Storm 集群中有多个工作节点共一个百多工作进程（worker），其中某些节点上的某些工作进程监听端口失败一直在重试，节点工作进程间通信失败，整个集群启动耗时很长甚至无法完成启动进行工作。<br><br><br>我们 Storm 的工作进程端口列表（${STORM_HOME}/conf/storm.yaml 配置 supervisor.slots.ports 指定）为  6700 - 6731，查看 Linux 系统预留源端口：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cat /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">1024 65000</span><br></pre></td></tr></table></figure></p><p><br><br>系统预留了 1024 - 65000 端口作为服务端口，也就是说 TCP/IP协议栈会从 1024 - 65000 中随机选取端口作为源与其他服务建立连接进行通信，而我们 Strom 的工作进程端口列表正好包含在这个范围内，但程序停止时，释放的端口可能被占用了，导致下次启动异常，因此需要调整该配置：</p><ul><li>修改 /etc/sysctl.conf 中 net.ipv4.ip_local_port_range 配置的范围，使其不包含我们需要的 6700 - 6731（如 6732 - 65000）；</li><li>重启系统或者执行 <strong>sysctl -p</strong> 让配置生效；</li><li>注意端口范围不要超过 1024 和 65535，1024 以下系统使用，65535 以上设置会会提示失败；</li></ul><p><br><br>经过以上的操作，我们再次向 Strom 集群提交 Topology 后启动便很快了，另外从 Storm UI 监控界面上也发现消费速度有很大的提升（估计也跟端口开放/竞争有关）。</p><p>另外，ip_local_port_range 是范围配置，以上修改使得系统可用端口量减少了，但服务器需要消耗大量端口号时可能会存在瓶颈。可与以下配置配合：</p><ul><li>ip_local_reserved_ports：TCP/IP协议栈从 ip_local_port_range 中随机选取源端口时，会排除ip_local_reserved_ports 中定义的端口，同样在 /etc/sysctl.conf 中配置；</li></ul><p>如以上修改按以下配置（不改动 ip_local_port_range ）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.ip_local_reserved_ports = 6700-6731</span><br></pre></td></tr></table></figure></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sysctl -p</span><br><span class="line">net.ipv4.ip_forward = 0</span><br><span class="line">net.ipv4.conf.default.rp_filter = 1</span><br><span class="line">net.ipv4.conf.default.accept_source_route = 0</span><br><span class="line">kernel.sysrq = 0</span><br><span class="line">kernel.core_uses_pid = 1</span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">kernel.msgmnb = 65536</span><br><span class="line">kernel.msgmax = 65536</span><br><span class="line">kernel.shmmax = 68719476736</span><br><span class="line">kernel.shmall = 4294967296</span><br><span class="line">net.ipv4.ip_local_reserved_ports = 6700-6731</span><br><span class="line"><span class="meta">#</span> cat /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">1024 65000</span><br><span class="line"><span class="meta">#</span> cat /proc/sys/net/ipv4/ip_local_reserved_ports</span><br><span class="line">6700-6731</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近参与的项目中，使用 Apche Storm 实时消费/处理 Kafka 消息，但提交执行 Topology 时，经常发现启动（各个工作节点正常工作）很久，查看工作节点的相关日志（${STORM_HOME}/logs/workers-artifacts/ 目录下），经常发
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.dwxu.me/categories/Linux/"/>
+    
+    
+      <category term="运维" scheme="http://www.dwxu.me/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux系统使用 iostat 命令监视磁盘设备活动情况</title>
     <link href="http://www.dwxu.me/2018/05/24/linux-iostat/"/>
     <id>http://www.dwxu.me/2018/05/24/linux-iostat/</id>
     <published>2018-05-24T14:10:10.000Z</published>
-    <updated>2018-05-24T14:57:04.835Z</updated>
+    <updated>2018-05-27T02:35:09.960Z</updated>
     
     <content type="html"><![CDATA[<p>最近在排查 MariaDB 主从数据库数据同步/复制延迟问题，使用 Linux 系统的 iostat 查看服务器磁盘设备的活动情况，发现瓶颈在于磁盘的I/O，一般而言，大量数据读写频繁的情况下，最终磁盘I/O都会成为瓶颈。</p><h3 id="1-使用说明"><a href="#1-使用说明" class="headerlink" title="1. 使用说明"></a>1. 使用说明</h3><ul><li>查看 CPU 和磁盘 I/O 相关的统计信息</li><li><p>指令格式：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[51la_dev@db2 ~]$ iostat --help</span><br><span class="line">Usage: iostat [ options ] [ &lt;interval&gt; [ &lt;count&gt; ] ]</span><br><span class="line">Options are:</span><br><span class="line">[ -c ] [ -d ] [ -N ] [ -n ] [ -h ] [ -k | -m ] [ -t ] [ -V ] [ -x ] [ -y ] [ -z ]</span><br><span class="line">[ -j &#123; ID | LABEL | PATH | UUID | ... &#125; [ &lt;device&gt; [...] | ALL ] ]</span><br><span class="line">[ &lt;device&gt; [...] | ALL ] [ -p [ &lt;device&gt; [,...] | ALL ] ]</span><br></pre></td></tr></table></figure></li><li><p>主要参数说明：</p><ul><li>-c：显示CPU使用情况</li><li>-d：显示磁盘使用情况</li><li>-k：以 KB 为单位显示</li><li>-m：以 M 为单位显示</li><li>-N：显示磁盘阵列(LVM) 信息</li><li>-n：显示NFS 使用情况</li><li>-p[磁盘]：显示磁盘和分区的情况</li><li>-t：显示终端和CPU的信息</li><li>-x：显示详细信息</li><li>-V：显示版本信息</li></ul></li></ul><h3 id="2-使用实例"><a href="#2-使用实例" class="headerlink" title="2. 使用实例"></a>2. 使用实例</h3><p><div align="center"><br><img src="/2018/05/24/linux-iostat/iostat.png" alt="iostat"><br></div></p><ul><li><p>输出信息说明：</p><ul><li>首行：系统/服务器相关信息</li><li>avg-cpu：cpu 状态信息</li><li>rrqm/s：每秒合并读操作的次数</li><li>wrqm/s：每秒合并写操作的次数</li><li>r/s：每秒读操作的次数</li><li>w/s： 每秒写操作的次数</li><li>rMB/s：每秒读取的MB字节数</li><li>wMB/s：每秒写入的MB字节数</li><li>avgrq-sz：平均每个 I/O 操作的扇区数，即所有请求的平均大小，以扇区（512字节）为单位</li><li>avgqu-sz：平均 I/O 请求队列长度</li><li>await：平均每个 I/O 所需要的时间，包括在队列等待的时间，也包括磁盘控制器处理本次请求的有效时间（毫秒）</li><li>r_wait：每个读操作平均所需要的时间，不仅包括硬盘设备读操作的时间，也包括在内核队列中的时间（毫秒）</li><li>w_wait：每个写操平均所需要的时间，不仅包括硬盘设备写操作的时间，也包括在队列中等待的时间（毫秒）</li><li>svctm：平均每次设备I/O操作的服务时间 (毫秒)</li><li>%util：工作时间或者繁忙时间占总时间的百分比</li></ul></li><li><p>简单分析以上截图：</p><ul><li>服务器有 48 个逻辑 CPU，而且很空闲（93.36% 的空闲），性能是比较强</li><li>sde 磁盘/设备的写操作十分频繁（每秒超过 1000 次），读操作平均等待时间超过 1000 毫秒，尤其是 %util 到达 100%（没有空闲时间），很容易（或已经）导致性能受限，成为相关任务的瓶颈。</li></ul></li></ul>]]></content>
     
@@ -38,7 +63,7 @@
       <category term="Linux" scheme="http://www.dwxu.me/categories/Linux/"/>
     
     
-      <category term="性能" scheme="http://www.dwxu.me/tags/%E6%80%A7%E8%83%BD/"/>
+      <category term="运维" scheme="http://www.dwxu.me/tags/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   

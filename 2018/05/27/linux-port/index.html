@@ -17,16 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>标签: Redis | Dongwu Xu - Blog</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Dongwu Xu">
-<meta property="og:url" content="http://www.dwxu.me/tags/Redis/index.html">
+  <title>Linux系统端口范围限制 | Dongwu Xu - Blog</title>
+  <meta name="description" content="最近参与的项目中，使用 Apche Storm 实时消费/处理 Kafka 消息，但提交执行 Topology 时，经常发现启动（各个工作节点正常工作）很久，查看工作节点的相关日志（${STORM_HOME}/logs/workers-artifacts/ 目录下），经常发现有大量以下错误日志在滚动输出：12018-05-24 15:30:00.453 o.a.s.m.n.Client [ERRO">
+<meta name="keywords" content="运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux系统端口范围限制">
+<meta property="og:url" content="http://www.dwxu.me/2018/05/27/linux-port/index.html">
 <meta property="og:site_name" content="Dongwu Xu">
+<meta property="og:description" content="最近参与的项目中，使用 Apche Storm 实时消费/处理 Kafka 消息，但提交执行 Topology 时，经常发现启动（各个工作节点正常工作）很久，查看工作节点的相关日志（${STORM_HOME}/logs/workers-artifacts/ 目录下），经常发现有大量以下错误日志在滚动输出：12018-05-24 15:30:00.453 o.a.s.m.n.Client [ERRO">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-27T02:35:41.206Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dongwu Xu">
+<meta name="twitter:title" content="Linux系统端口范围限制">
+<meta name="twitter:description" content="最近参与的项目中，使用 Apche Storm 实时消费/处理 Kafka 消息，但提交执行 Topology 时，经常发现启动（各个工作节点正常工作）很久，查看工作节点的相关日志（${STORM_HOME}/logs/workers-artifacts/ 目录下），经常发现有大量以下错误日志在滚动输出：12018-05-24 15:30:00.453 o.a.s.m.n.Client [ERRO">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://www.dwxu.me/tags/Redis/index.html">
+  <link rel="canonical" href="http://www.dwxu.me/2018/05/27/linux-port/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Dongwu Xu" type="application/atom+xml">
   
@@ -320,68 +325,113 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="content article article-tags post-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">标签: Redis</h1>
-      <p class="text-muted hidden-xs">共 1 篇文章</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/tags">All</a></li>
-          
-          <li><a href="/tags/日记/">日记</a></li>
-          
-          <li><a href="/tags/Gmail/">Gmail</a></li>
-          
-          <li><a href="/tags/语法糖/">语法糖</a></li>
-          
-          <li><a href="/tags/泛型/">泛型</a></li>
-          
-          <li><a href="/tags/运维/">运维</a></li>
-          
-          <li><a href="/tags/实时统计/">实时统计</a></li>
-          
-          <li><a href="/tags/Redis/">Redis</a></li>
-          
-          <li><a href="/tags/搜索引擎/">搜索引擎</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="row">
-        
-<div class="col-md-6">
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-linux-port" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-<article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="panel-body">
-     <div class="article-meta">
-       <time datetime="2018-05-16T15:20:09.000Z" itemprop="datePublished">2018-05-16</time>
-     </div>
-     <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2018/05/16/online-statistics/">高并发下多站点在线访问实时统计</a>
-     </h3>
-   </div>
-   
-   <div class="panel-footer">
-     
-      <a href="/tags/实时统计/" class="label label-default mb">实时统计</a>
-     
-      <a href="/tags/Redis/" class="label label-default mb">Redis</a>
-     
-     
-   </div>
-   
-</article>
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux系统端口范围限制
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/05/27/linux-port/" class="article-date">
+	  <time datetime="2018-05-27T01:36:19.000Z" itemprop="datePublished">2018-05-27</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/运维/">运维</a>
+  </span>
 
 
-</div>
+        
 
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/05/27/linux-port/#comments" class="article-comment-link">评论</a></span>
+        
       </div>
     </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>最近参与的项目中，使用 Apche Storm 实时消费/处理 Kafka 消息，但提交执行 Topology 时，经常发现启动（各个工作节点正常工作）很久，查看工作节点的相关日志（${STORM_HOME}/logs/workers-artifacts/ 目录下），经常发现有大量以下错误日志在滚动输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018-05-24 15:30:00.453 o.a.s.m.n.Client [ERROR] connection attempt 26 to Netty-Client-cdh5/xxx.xxx.xxx.xxx:6714 failed: java.net.ConnectException: Connection refused: cdh5/xxx.xxx.xxx.xxx:6714</span><br></pre></td></tr></table></figure></p>
+<p>从日志初步看，是工作进程尝试与其他工作进程进行通信建立连接时被拒绝，很大可能是工作进程还没有启动完成（监听相关端口，如上述日志中 cdh5 的 6714 端口）。<br><br><br>正常来说，程序监听空闲端口启动是很快的，除非是端口被占用了，一直在等待端口释放。我们的 Storm 集群中有多个工作节点共一个百多工作进程（worker），其中某些节点上的某些工作进程监听端口失败一直在重试，节点工作进程间通信失败，整个集群启动耗时很长甚至无法完成启动进行工作。<br><br><br>我们 Storm 的工作进程端口列表（${STORM_HOME}/conf/storm.yaml 配置 supervisor.slots.ports 指定）为  6700 - 6731，查看 Linux 系统预留源端口：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cat /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">1024 65000</span><br></pre></td></tr></table></figure></p>
+<p><br><br>系统预留了 1024 - 65000 端口作为服务端口，也就是说 TCP/IP协议栈会从 1024 - 65000 中随机选取端口作为源与其他服务建立连接进行通信，而我们 Strom 的工作进程端口列表正好包含在这个范围内，但程序停止时，释放的端口可能被占用了，导致下次启动异常，因此需要调整该配置：</p>
+<ul>
+<li>修改 /etc/sysctl.conf 中 net.ipv4.ip_local_port_range 配置的范围，使其不包含我们需要的 6700 - 6731（如 6732 - 65000）；</li>
+<li>重启系统或者执行 <strong>sysctl -p</strong> 让配置生效；</li>
+<li>注意端口范围不要超过 1024 和 65535，1024 以下系统使用，65535 以上设置会会提示失败；</li>
+</ul>
+<p><br><br>经过以上的操作，我们再次向 Strom 集群提交 Topology 后启动便很快了，另外从 Storm UI 监控界面上也发现消费速度有很大的提升（估计也跟端口开放/竞争有关）。</p>
+<p>另外，ip_local_port_range 是范围配置，以上修改使得系统可用端口量减少了，但服务器需要消耗大量端口号时可能会存在瓶颈。可与以下配置配合：</p>
+<ul>
+<li>ip_local_reserved_ports：TCP/IP协议栈从 ip_local_port_range 中随机选取源端口时，会排除ip_local_reserved_ports 中定义的端口，同样在 /etc/sysctl.conf 中配置；</li>
+</ul>
+<p>如以上修改按以下配置（不改动 ip_local_port_range ）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.ip_local_reserved_ports = 6700-6731</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sysctl -p</span><br><span class="line">net.ipv4.ip_forward = 0</span><br><span class="line">net.ipv4.conf.default.rp_filter = 1</span><br><span class="line">net.ipv4.conf.default.accept_source_route = 0</span><br><span class="line">kernel.sysrq = 0</span><br><span class="line">kernel.core_uses_pid = 1</span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">kernel.msgmnb = 65536</span><br><span class="line">kernel.msgmax = 65536</span><br><span class="line">kernel.shmmax = 68719476736</span><br><span class="line">kernel.shmall = 4294967296</span><br><span class="line">net.ipv4.ip_local_reserved_ports = 6700-6731</span><br><span class="line"><span class="meta">#</span> cat /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">1024 65000</span><br><span class="line"><span class="meta">#</span> cat /proc/sys/net/ipv4/ip_local_reserved_ports</span><br><span class="line">6700-6731</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      
+
+    </div>
   </article>
-   
+  
+    
+  <section id="comments">
+  	
+       
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNjQ5MC8xMzAyNQ==">
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+      
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2018/05/24/linux-iostat/" title="Linux系统使用 iostat 命令监视磁盘设备活动情况"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -431,6 +481,28 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     
     
     
+        
+
+
+    
+    
+        
+    
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
     
     
 

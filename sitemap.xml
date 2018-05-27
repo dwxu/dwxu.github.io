@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.dwxu.me/2018/05/27/linux-port/</loc>
+    
+    <lastmod>2018-05-27T02:35:41.206Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.dwxu.me/2018/05/24/linux-iostat/</loc>
     
-    <lastmod>2018-05-24T14:57:04.835Z</lastmod>
+    <lastmod>2018-05-27T02:35:09.960Z</lastmod>
     
   </url>
   
@@ -65,14 +72,14 @@
   </url>
   
   <url>
-    <loc>http://www.dwxu.me/categories/index.html</loc>
+    <loc>http://www.dwxu.me/links/index.html</loc>
     
     <lastmod>2018-05-13T15:17:53.082Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.dwxu.me/links/index.html</loc>
+    <loc>http://www.dwxu.me/categories/index.html</loc>
     
     <lastmod>2018-05-13T15:17:53.082Z</lastmod>
     
