@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://www.dwxu.me/2018/05/29/spring-cloud-session/</loc>
+    <lastmod>2018-05-29T15:47:21.743Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Cloud 多服务/多实例 Session 共享</title>
+        <pubTime>2018-05-29T14:50:16.000Z</pubTime>
+        
+        <tag>Redis</tag>
+         
+        <tag>Spring-cloud</tag>
+         
+        <tag>Spring-session</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring" url="http://www.dwxu.me/categories/Spring/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dwxu.me/2018/05/27/linux-port/</loc>
     <lastmod>2018-05-27T02:35:41.206Z</lastmod>
     <data>
