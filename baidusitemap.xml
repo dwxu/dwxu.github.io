@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.dwxu.me/2018/05/29/spring-cloud-session/</loc>
-    <lastmod>2018-05-29T15:47:21.743Z</lastmod>
+    <lastmod>2018-05-29T15:49:31.898Z</lastmod>
     <data>
         <display>
         <title>Spring Cloud 多服务/多实例 Session 共享</title>
@@ -13,9 +13,9 @@
         
         <tag>Redis</tag>
          
-        <tag>Spring-cloud</tag>
+        <tag>Spring-Cloud</tag>
          
-        <tag>Spring-session</tag>
+        <tag>Spring-Session</tag>
          
          
            

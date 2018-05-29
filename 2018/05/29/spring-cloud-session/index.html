@@ -19,7 +19,7 @@
   
   <title>Spring Cloud 多服务/多实例 Session 共享 | Dongwu Xu - Blog</title>
   <meta name="description" content="项目中，前后端分离，后端使用 Spring Cloud 管理多个微服务和多个实例，使用 Zuul 实现 API Gateway （反向代理）供前端请求/访问。前后端分离，需要做前端请求的权限认证，即鉴权，由于我们的项目后端提供的接口仅供前端请求，非对外公共接口，因此不考虑搭建统一认证（如 OAUTH 2.0）中心走那么复杂的认证过程，此外考虑过做简单  JWT 的认证，但由于缺点比较明显，如注销/">
-<meta name="keywords" content="Redis,Spring-cloud,Spring-session">
+<meta name="keywords" content="Redis,Spring-Cloud,Spring-Session">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Cloud 多服务&#x2F;多实例 Session 共享">
 <meta property="og:url" content="http://www.dwxu.me/2018/05/29/spring-cloud-session/index.html">
@@ -27,7 +27,7 @@
 <meta property="og:description" content="项目中，前后端分离，后端使用 Spring Cloud 管理多个微服务和多个实例，使用 Zuul 实现 API Gateway （反向代理）供前端请求/访问。前后端分离，需要做前端请求的权限认证，即鉴权，由于我们的项目后端提供的接口仅供前端请求，非对外公共接口，因此不考虑搭建统一认证（如 OAUTH 2.0）中心走那么复杂的认证过程，此外考虑过做简单  JWT 的认证，但由于缺点比较明显，如注销/">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.dwxu.me/2018/05/29/spring-cloud-session/instances.png">
-<meta property="og:updated_time" content="2018-05-29T15:47:21.743Z">
+<meta property="og:updated_time" content="2018-05-29T15:49:31.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Cloud 多服务&#x2F;多实例 Session 共享">
 <meta name="twitter:description" content="项目中，前后端分离，后端使用 Spring Cloud 管理多个微服务和多个实例，使用 Zuul 实现 API Gateway （反向代理）供前端请求/访问。前后端分离，需要做前端请求的权限认证，即鉴权，由于我们的项目后端提供的接口仅供前端请求，非对外公共接口，因此不考虑搭建统一认证（如 OAUTH 2.0）中心走那么复杂的认证过程，此外考虑过做简单  JWT 的认证，但由于缺点比较明显，如注销/">
@@ -211,7 +211,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gmail/">Gmail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-cloud/">Spring-cloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-session/">Spring-session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实时统计/">实时统计</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索引擎/">搜索引擎</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/泛型/">泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法糖/">语法糖</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/运维/">运维</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gmail/">Gmail</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/">Redis</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Cloud/">Spring-Cloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Session/">Spring-Session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实时统计/">实时统计</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搜索引擎/">搜索引擎</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/泛型/">泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语法糖/">语法糖</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/运维/">运维</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -221,7 +221,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/Gmail/" style="font-size: 13px;">Gmail</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Spring-cloud/" style="font-size: 13px;">Spring-cloud</a> <a href="/tags/Spring-session/" style="font-size: 13px;">Spring-session</a> <a href="/tags/实时统计/" style="font-size: 13px;">实时统计</a> <a href="/tags/搜索引擎/" style="font-size: 13px;">搜索引擎</a> <a href="/tags/日记/" style="font-size: 13px;">日记</a> <a href="/tags/泛型/" style="font-size: 13px;">泛型</a> <a href="/tags/语法糖/" style="font-size: 14px;">语法糖</a> <a href="/tags/运维/" style="font-size: 14px;">运维</a>
+      <a href="/tags/Gmail/" style="font-size: 13px;">Gmail</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Spring-Cloud/" style="font-size: 13px;">Spring-Cloud</a> <a href="/tags/Spring-Session/" style="font-size: 13px;">Spring-Session</a> <a href="/tags/实时统计/" style="font-size: 13px;">实时统计</a> <a href="/tags/搜索引擎/" style="font-size: 13px;">搜索引擎</a> <a href="/tags/日记/" style="font-size: 13px;">日记</a> <a href="/tags/泛型/" style="font-size: 13px;">泛型</a> <a href="/tags/语法糖/" style="font-size: 14px;">语法糖</a> <a href="/tags/运维/" style="font-size: 14px;">运维</a>
     </div>
   </div>
 
@@ -358,7 +358,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Redis/">Redis</a>, <a class="article-tag-link" href="/tags/Spring-cloud/">Spring-cloud</a>, <a class="article-tag-link" href="/tags/Spring-session/">Spring-session</a>
+	<a class="article-tag-link" href="/tags/Redis/">Redis</a>, <a class="article-tag-link" href="/tags/Spring-Cloud/">Spring-Cloud</a>, <a class="article-tag-link" href="/tags/Spring-Session/">Spring-Session</a>
   </span>
 
 
