@@ -17,20 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>关于我 | Dongwu Xu - Blog</title>
-  <meta name="description" content="Java程序员，进阶中...">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="http://www.dwxu.me/about/index.html">
+  <title>Spring Boot 应用输出 Mybatis SQL 语句 | Dongwu Xu - Blog</title>
+  <meta name="description" content="1. 在 logback.xml 增加配置123456789101112131415161718&amp;lt;configuration scan=&quot;true&quot;&amp;gt;    &amp;lt;!-- 输出到控制台 --&amp;gt;    &amp;lt;appender name=&quot;stdout&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&amp;gt;        &amp;lt;layo">
+<meta name="keywords" content="Spring-boot,Mybatis,Logback">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot 应用输出 Mybatis SQL 语句">
+<meta property="og:url" content="http://www.dwxu.me/2018/05/31/spring-boot-mybatis-sql/index.html">
 <meta property="og:site_name" content="Dongwu Xu">
-<meta property="og:description" content="Java程序员，进阶中...">
+<meta property="og:description" content="1. 在 logback.xml 增加配置123456789101112131415161718&amp;lt;configuration scan=&quot;true&quot;&amp;gt;    &amp;lt;!-- 输出到控制台 --&amp;gt;    &amp;lt;appender name=&quot;stdout&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&amp;gt;        &amp;lt;layo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-21T14:11:10.067Z">
+<meta property="og:updated_time" content="2018-05-31T14:01:46.762Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="Java程序员，进阶中...">
+<meta name="twitter:title" content="Spring Boot 应用输出 Mybatis SQL 语句">
+<meta name="twitter:description" content="1. 在 logback.xml 增加配置123456789101112131415161718&amp;lt;configuration scan=&quot;true&quot;&amp;gt;    &amp;lt;!-- 输出到控制台 --&amp;gt;    &amp;lt;appender name=&quot;stdout&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&amp;gt;        &amp;lt;layo">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://www.dwxu.me/about/index.html">
+  <link rel="canonical" href="http://www.dwxu.me/2018/05/31/spring-boot-mybatis-sql/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Dongwu Xu" type="application/atom+xml">
   
@@ -324,83 +325,100 @@
 </aside>
 
   
-  <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-    <div class="widget">
-      <h3 class="widget-title">个人链接</h3>
-      <div class="widget-body">
-        <ul class="link-list lh-2x">
-          
-          <li>
-            Github:
-            <a href="https://github.com/dwxu" target="_blank">https://github.com/dwxu</a>
-          </li>
-          
-          <li>
-            Blog:
-            <a href="http://www.dwxu.me" target="_blank">http://www.dwxu.me</a>
-          </li>
-          
-          <li>
-            微博:
-            <a href="http://weibo.com/xiwangchen" target="_blank">http://weibo.com/xiwangchen</a>
-          </li>
-          
-        </ul>
-      </div>
-    </div>
-    
-    
-    <div class="widget">
-      <h3 class="widget-title">技能</h3>
-      <div class="widget-body">
-        <ul class="skill-list lh-2x">
-          
-          <li class="clearfix">
-            <span>Java</span>
-            <span class="pull-right">★★★☆☆</span>
-          </li>
-          
-          <li class="clearfix">
-            <span>Web</span>
-            <span class="pull-right">★★★☆☆</span>
-          </li>
-          
-        </ul>
-      </div>
-    </div>
-    
-    
-    <div class="widget">
-      <h3 class="widget-title">个人标签</h3>
-      <div class="widget-body">
-        
-        <span class="label label-default mb">Java</span>
-        
-        <span class="label label-default mb">Web</span>
-        
-      </div>
-    </div>
-    
-    
-    
-  </div>
-</aside>
+  
 <main class="main" role="main">
-  <article class="article archives-about article-type-normal" itemscope="">
-  <header class="article-header">
-    <h1 itemprop="title">关于我</h1>
+  <div class="content">
+  <article id="post-spring-boot-mybatis-sql" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-    <p class="text-muted">Java程序员，进阶中...</p>
-    
-  </header>
-  <div class="article-body">
-    <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"Dongwu Xu"</span>,</span><br><span class="line">  <span class="attr">"age"</span>: <span class="number">24</span>,</span><br><span class="line">  <span class="attr">"gender"</span>: <span class="string">"男"</span>,</span><br><span class="line">  <span class="attr">"address"</span>: <span class="string">"广东省广州市"</span>,</span><br><span class="line">  <span class="attr">"education"</span>: <span class="string">"本科"</span>,</span><br><span class="line">  <span class="attr">"profession"</span>: <span class="string">"计算机"</span>,</span><br><span class="line">  <span class="attr">"experience"</span>: <span class="string">"4年"</span>,</span><br><span class="line">  <span class="attr">"github"</span>: <span class="string">"https://github.com/dwxu"</span>,</span><br><span class="line">  <span class="attr">"blog"</span>: <span class="string">"http://www.dwxu.me"</span>,</span><br><span class="line">  <span class="attr">"email"</span>: <span class="string">"im.xudongwu@gmail.com"</span>,</span><br><span class="line"></span><br><span class="line">  <span class="attr">"skill"</span>:[</span><br><span class="line">    [<span class="string">"Java"</span>],</span><br><span class="line">    [<span class="string">"Spring"</span>, <span class="string">"Mybatis"</span>, <span class="string">"Apache Storm"</span>],</span><br><span class="line">    [<span class="string">"Html"</span>, <span class="string">"Javascript"</span>, <span class="string">"JQuery"</span>, <span class="string">"CSS"</span>],</span><br><span class="line">    [<span class="string">"Redis"</span>, <span class="string">"Kafka"</span>],</span><br><span class="line">    [<span class="string">"MySQL"</span>, <span class="string">"MariaDB"</span>],</span><br><span class="line">    [<span class="string">"Git"</span>, <span class="string">"SVN"</span>],</span><br><span class="line">    [<span class="string">"Maven"</span>, <span class="string">"Ant"</span>]</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  <span class="attr">"os"</span>: [<span class="string">"masOS"</span>, <span class="string">"IOS"</span>, <span class="string">"Windows"</span>, <span class="string">"Linux"</span>],</span><br><span class="line"></span><br><span class="line">  <span class="attr">"devTool"</span>:[</span><br><span class="line">    [<span class="string">"IntelliJ IDEA"</span>, <span class="string">"Eclipse"</span>],</span><br><span class="line">    [<span class="string">"Chrome DevTools"</span>, <span class="string">"Fiddler"</span>],</span><br><span class="line">    [<span class="string">"Git Bash"</span>, <span class="string">"TortoiseSVN"</span>],</span><br><span class="line">    [<span class="string">"Navicat"</span>],</span><br><span class="line">    [<span class="string">"Xshell"</span>, <span class="string">"Xftp"</span>, <span class="string">"SecureCRT"</span>]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring Boot 应用输出 Mybatis SQL 语句
+    </h1>
+  
 
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/05/31/spring-boot-mybatis-sql/" class="article-date">
+	  <time datetime="2018-05-31T13:58:22.000Z" itemprop="datePublished">2018-05-31</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Logback/">Logback</a>, <a class="article-tag-link" href="/tags/Mybatis/">Mybatis</a>, <a class="article-tag-link" href="/tags/Spring-boot/">Spring-boot</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/05/31/spring-boot-mybatis-sql/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <h4 id="1-在-logback-xml-增加配置"><a href="#1-在-logback-xml-增加配置" class="headerlink" title="1. 在 logback.xml 增加配置"></a>1. 在 logback.xml 增加配置</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">scan</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 输出到控制台 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">"stdout"</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.core.ConsoleAppender"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">layout</span> <span class="attr">class</span>=<span class="string">"ch.qos.logback.classic.PatternLayout"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span></span><br><span class="line">                %d&#123;HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;40&#125; - %msg%n</span><br><span class="line">            <span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">root</span> <span class="attr">level</span>=<span class="string">"INFO"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"stdout"</span>  /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">logger</span> <span class="attr">name</span>=<span class="string">"com.foo.component.mapper"</span> <span class="attr">level</span>=<span class="string">"DEBUG"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">"stdout"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">logger</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>logger 节点 name 属性的值为 Mybatis Mapper 接口所在包路径；</li>
+<li>示例中将日志输出到标准输出（控制台）中；</li>
+</ul>
+<h4 id="2-重启应用"><a href="#2-重启应用" class="headerlink" title="2. 重启应用"></a>2. 重启应用</h4><h4 id="3-进行数据库查询，可以看到控制台输出相关-SQL-查询日志"><a href="#3-进行数据库查询，可以看到控制台输出相关-SQL-查询日志" class="headerlink" title="3. 进行数据库查询，可以看到控制台输出相关 SQL 查询日志"></a>3. 进行数据库查询，可以看到控制台输出相关 SQL 查询日志</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">09:07:58.029 [http-nio-8030-exec-1] DEBUG l._.p.c.mapper.UserSiteMapper.count - ==&gt;  Preparing: select count(id) from platform_user_site WHERE user_id = ? </span><br><span class="line">09:07:58.029 [http-nio-8030-exec-1] DEBUG l._.p.c.mapper.UserSiteMapper.count - ==&gt; Parameters: 3(Long)</span><br><span class="line">09:07:58.032 [http-nio-8030-exec-1] DEBUG l._.p.c.mapper.UserSiteMapper.count - &lt;==      Total: 1</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+<div id="lv-container" data-id="city" data-uid="MTAyMC8zNjQ5MC8xMzAyNQ==">
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+      
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2018/05/29/spring-cloud-session/" title="Spring Cloud 多服务/多实例 Session 共享"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
   </div>
-</article>
-
+  </div>
+</nav>
   
 
 
@@ -453,6 +471,28 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     
     
     
+        
+
+
+    
+    
+        
+    
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+
     
     
 

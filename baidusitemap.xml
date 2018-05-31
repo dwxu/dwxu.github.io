@@ -4,8 +4,32 @@
 
     
   <url>
+    <loc>http://www.dwxu.me/2018/05/31/spring-boot-mybatis-sql/</loc>
+    <lastmod>2018-05-31T14:01:46.762Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Boot 应用输出 Mybatis SQL 语句</title>
+        <pubTime>2018-05-31T13:58:22.000Z</pubTime>
+        
+        <tag>Spring-boot</tag>
+         
+        <tag>Mybatis</tag>
+         
+        <tag>Logback</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spring" url="http://www.dwxu.me/categories/Spring/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dwxu.me/2018/05/29/spring-cloud-session/</loc>
-    <lastmod>2018-05-29T15:49:31.898Z</lastmod>
+    <lastmod>2018-05-29T16:06:11.551Z</lastmod>
     <data>
         <display>
         <title>Spring Cloud 多服务/多实例 Session 共享</title>
