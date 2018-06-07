@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.dwxu.me/2018/06/07/MariaDB-Replication-Delay/iostat.png">
 <meta property="og:image" content="http://www.dwxu.me/2018/06/07/MariaDB-Replication-Delay/iostat1.png">
-<meta property="og:updated_time" content="2018-06-07T16:27:35.264Z">
+<meta property="og:updated_time" content="2018-06-07T16:28:36.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库复制（主从同步）延迟问题分析及处理过程">
 <meta name="twitter:description" content="一、前言&amp;emsp;&amp;emsp;由于我们的产品数据量非常大，写库十分频繁，每日大概有 8 - 9 亿的数据写入数据库。使用中间件 Mycat 做分片管理 18 个数据库实例下的多个 DB，考虑减轻数据集中写入的压力，使用了主主同步/复制的模式。&amp;emsp;&amp;emsp;随着时间的推移，数据库之间的同步延迟越来越大，导致从数据同步延迟的库中查询到的数据不实时，影响比较大，亟待解决。&amp;emsp;&amp;ems">
@@ -414,7 +414,7 @@
 <li>通过中间件 MyCat 分片管理，读写比较均匀地落到每个数据库实例上，不至于让某些实例负载过高；</li>
 </ul>
 </li>
-<li><p>单独分析服务器 CPU、内存均无异常，分析磁盘：<br><img src="/2018/06/07/MariaDB-Replication-Delay/iostat.png" alt="iostat"><br><br><br>&emsp;&emsp;可以看出，sde 磁盘（多个数据库实例目录所在盘） I/O 十分频繁，100% 的时间都在进行读写操作，当 I/O 的响应跟不上数据库同步读写的需求时，即成为瓶颈。</p>
+<li><p>单独分析服务器 CPU、内存均无异常，分析磁盘：<br><img src="/2018/06/07/MariaDB-Replication-Delay/iostat.png" alt="iostat"><br>&emsp;&emsp;可以看出，sde 磁盘（多个数据库实例目录所在盘） I/O 十分频繁，100% 的时间都在进行读写操作，当 I/O 的响应跟不上数据库同步读写的需求时，即成为瓶颈。</p>
 </li>
 </ul>
 <h2 id="三、处理过程"><a href="#三、处理过程" class="headerlink" title="三、处理过程"></a>三、处理过程</h2><h3 id="1-参数调优"><a href="#1-参数调优" class="headerlink" title="1. 参数调优"></a>1. 参数调优</h3><ul>
