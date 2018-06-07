@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>http://www.dwxu.me/2018/06/07/MariaDB-Replication-Delay/</loc>
+    <lastmod>2018-06-07T16:22:12.144Z</lastmod>
+    <data>
+        <display>
+        <title>数据库复制（主从同步）延迟问题分析及处理过程</title>
+        <pubTime>2018-06-07T15:43:27.000Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>MariaDB</tag>
+         
+        <tag>Replication</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://www.dwxu.me/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dwxu.me/2018/05/31/spring-boot-mybatis-sql/</loc>
     <lastmod>2018-05-31T14:04:52.708Z</lastmod>
     <data>
