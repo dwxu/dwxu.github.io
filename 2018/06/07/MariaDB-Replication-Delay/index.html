@@ -18,20 +18,20 @@
   
   
   <title>数据库复制（主从同步）延迟问题分析及处理过程 | Dongwu Xu - Blog</title>
-  <meta name="description" content="一、前言由于我们的产品数据量非常大，写库十分频繁，每日大概有 8 - 9 亿的数据写入数据库。使用中间件 Mycat 做分片管理 18 个数据库实例下的多个 DB，考虑减轻数据集中写入的压力，使用了主主同步/复制的模式。但是随着时间的推移，数据库之间的同步延迟越来越大，导致从数据同步延迟的库中查询到的数据不实时，影响比较大，亟待解决。我们实际使用的数据库为 MariaDB，MySQL 源代码的一个">
+  <meta name="description" content="一、前言&amp;emsp;&amp;emsp;由于我们的产品数据量非常大，写库十分频繁，每日大概有 8 - 9 亿的数据写入数据库。使用中间件 Mycat 做分片管理 18 个数据库实例下的多个 DB，考虑减轻数据集中写入的压力，使用了主主同步/复制的模式。&amp;emsp;&amp;emsp;随着时间的推移，数据库之间的同步延迟越来越大，导致从数据同步延迟的库中查询到的数据不实时，影响比较大，亟待解决。&amp;emsp;&amp;ems">
 <meta name="keywords" content="MySQL,MariaDB,Replication">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库复制（主从同步）延迟问题分析及处理过程">
 <meta property="og:url" content="http://www.dwxu.me/2018/06/07/MariaDB-Replication-Delay/index.html">
 <meta property="og:site_name" content="Dongwu Xu">
-<meta property="og:description" content="一、前言由于我们的产品数据量非常大，写库十分频繁，每日大概有 8 - 9 亿的数据写入数据库。使用中间件 Mycat 做分片管理 18 个数据库实例下的多个 DB，考虑减轻数据集中写入的压力，使用了主主同步/复制的模式。但是随着时间的推移，数据库之间的同步延迟越来越大，导致从数据同步延迟的库中查询到的数据不实时，影响比较大，亟待解决。我们实际使用的数据库为 MariaDB，MySQL 源代码的一个">
+<meta property="og:description" content="一、前言&amp;emsp;&amp;emsp;由于我们的产品数据量非常大，写库十分频繁，每日大概有 8 - 9 亿的数据写入数据库。使用中间件 Mycat 做分片管理 18 个数据库实例下的多个 DB，考虑减轻数据集中写入的压力，使用了主主同步/复制的模式。&amp;emsp;&amp;emsp;随着时间的推移，数据库之间的同步延迟越来越大，导致从数据同步延迟的库中查询到的数据不实时，影响比较大，亟待解决。&amp;emsp;&amp;ems">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.dwxu.me/2018/06/07/MariaDB-Replication-Delay/iostat.png">
 <meta property="og:image" content="http://www.dwxu.me/2018/06/07/MariaDB-Replication-Delay/iostat1.png">
-<meta property="og:updated_time" content="2018-06-07T16:26:21.866Z">
+<meta property="og:updated_time" content="2018-06-07T16:27:35.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库复制（主从同步）延迟问题分析及处理过程">
-<meta name="twitter:description" content="一、前言由于我们的产品数据量非常大，写库十分频繁，每日大概有 8 - 9 亿的数据写入数据库。使用中间件 Mycat 做分片管理 18 个数据库实例下的多个 DB，考虑减轻数据集中写入的压力，使用了主主同步/复制的模式。但是随着时间的推移，数据库之间的同步延迟越来越大，导致从数据同步延迟的库中查询到的数据不实时，影响比较大，亟待解决。我们实际使用的数据库为 MariaDB，MySQL 源代码的一个">
+<meta name="twitter:description" content="一、前言&amp;emsp;&amp;emsp;由于我们的产品数据量非常大，写库十分频繁，每日大概有 8 - 9 亿的数据写入数据库。使用中间件 Mycat 做分片管理 18 个数据库实例下的多个 DB，考虑减轻数据集中写入的压力，使用了主主同步/复制的模式。&amp;emsp;&amp;emsp;随着时间的推移，数据库之间的同步延迟越来越大，导致从数据同步延迟的库中查询到的数据不实时，影响比较大，亟待解决。&amp;emsp;&amp;ems">
 <meta name="twitter:image" content="http://www.dwxu.me/2018/06/07/MariaDB-Replication-Delay/iostat.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://www.dwxu.me/2018/06/07/MariaDB-Replication-Delay/index.html">
@@ -371,7 +371,7 @@
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>由于我们的产品数据量非常大，写库十分频繁，每日大概有 8 - 9 亿的数据写入数据库。使用中间件 Mycat 做分片管理 18 个数据库实例下的多个 DB，考虑减轻数据集中写入的压力，使用了主主同步/复制的模式。<br>但是随着时间的推移，数据库之间的同步延迟越来越大，导致从数据同步延迟的库中查询到的数据不实时，影响比较大，亟待解决。<br>我们实际使用的数据库为 MariaDB，MySQL 源代码的一个分支，大部分特性相同。<br><br></p>
+        <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>&emsp;&emsp;由于我们的产品数据量非常大，写库十分频繁，每日大概有 8 - 9 亿的数据写入数据库。使用中间件 Mycat 做分片管理 18 个数据库实例下的多个 DB，考虑减轻数据集中写入的压力，使用了主主同步/复制的模式。<br>&emsp;&emsp;随着时间的推移，数据库之间的同步延迟越来越大，导致从数据同步延迟的库中查询到的数据不实时，影响比较大，亟待解决。<br>&emsp;&emsp;我们实际使用的数据库为 MariaDB，MySQL 源代码的一个分支，大部分特性相同。<br><br></p>
 <h2 id="二、问题分析"><a href="#二、问题分析" class="headerlink" title="二、问题分析"></a>二、问题分析</h2><h3 id="1-数据库同步-复制过程"><a href="#1-数据库同步-复制过程" class="headerlink" title="1. 数据库同步/复制过程"></a>1. 数据库同步/复制过程</h3><ul>
 <li>Master 在每个事务更新数据完成之前，会在 Binlog 中记录这些改变，数据库将事务串行的写入二进制日志，即使事务中的语句都是交叉执行的。在事件写入二进制日志完成后，Master通知存储引擎提交事务;</li>
 <li>Slave 的 I/O 线程将 Master 的 Binlog 拷贝到它自己的中继日志；</li>
