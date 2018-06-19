@@ -18,19 +18,19 @@
   
   
   <title>Spring Cloud Config 配置中心项目实践 | Dongwu Xu - Blog</title>
-  <meta name="description" content="一、现状说明由于项目基于 Spring Cloud 微服务架构，将业务拆分多个服务/应用，处于高可用和负载均衡的考虑，一个服务一般会部署多个实例。每个服务实例都需要进行配置，配置又需要区分多种环境，简单区分如 dev(本地开发)/test(测试环境)/prod(生产环境)，每个实例至少也需要维护三份配置，如果由人工进行各个环境各个服务实例配置的部署和维护，随着实例数量的增加，配置文件分散在各个环境">
+  <meta name="description" content="一、现状说明由于项目基于 Spring Cloud 微服务架构，将业务拆分多个服务/应用，处于高可用和负载均衡的考虑，每个服务会部署多个实例。每个服务实例都需要进行配置，配置又需要区分多种环境，简单区分如 dev(本地开发)/test(测试环境)/prod(生产环境)，每个实例至少也需要维护三份配置，如果由人工进行各个环境各个服务实例配置的部署和维护，随着实例数量的增加，配置文件分散在各个环境的各">
 <meta name="keywords" content="Spring-Cloud,Spring-Boot,Spring-Cloud-Config">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Cloud Config 配置中心项目实践">
 <meta property="og:url" content="http://www.dwxu.me/2018/06/17/spring-cloud-config/index.html">
 <meta property="og:site_name" content="Dongwu Xu">
-<meta property="og:description" content="一、现状说明由于项目基于 Spring Cloud 微服务架构，将业务拆分多个服务/应用，处于高可用和负载均衡的考虑，一个服务一般会部署多个实例。每个服务实例都需要进行配置，配置又需要区分多种环境，简单区分如 dev(本地开发)/test(测试环境)/prod(生产环境)，每个实例至少也需要维护三份配置，如果由人工进行各个环境各个服务实例配置的部署和维护，随着实例数量的增加，配置文件分散在各个环境">
+<meta property="og:description" content="一、现状说明由于项目基于 Spring Cloud 微服务架构，将业务拆分多个服务/应用，处于高可用和负载均衡的考虑，每个服务会部署多个实例。每个服务实例都需要进行配置，配置又需要区分多种环境，简单区分如 dev(本地开发)/test(测试环境)/prod(生产环境)，每个实例至少也需要维护三份配置，如果由人工进行各个环境各个服务实例配置的部署和维护，随着实例数量的增加，配置文件分散在各个环境的各">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://images.vrm.cn/2018/06/14/config-server.png">
-<meta property="og:updated_time" content="2018-06-17T04:34:19.977Z">
+<meta property="og:updated_time" content="2018-06-19T09:58:28.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Cloud Config 配置中心项目实践">
-<meta name="twitter:description" content="一、现状说明由于项目基于 Spring Cloud 微服务架构，将业务拆分多个服务/应用，处于高可用和负载均衡的考虑，一个服务一般会部署多个实例。每个服务实例都需要进行配置，配置又需要区分多种环境，简单区分如 dev(本地开发)/test(测试环境)/prod(生产环境)，每个实例至少也需要维护三份配置，如果由人工进行各个环境各个服务实例配置的部署和维护，随着实例数量的增加，配置文件分散在各个环境">
+<meta name="twitter:description" content="一、现状说明由于项目基于 Spring Cloud 微服务架构，将业务拆分多个服务/应用，处于高可用和负载均衡的考虑，每个服务会部署多个实例。每个服务实例都需要进行配置，配置又需要区分多种环境，简单区分如 dev(本地开发)/test(测试环境)/prod(生产环境)，每个实例至少也需要维护三份配置，如果由人工进行各个环境各个服务实例配置的部署和维护，随着实例数量的增加，配置文件分散在各个环境的各">
 <meta name="twitter:image" content="https://images.vrm.cn/2018/06/14/config-server.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://www.dwxu.me/2018/06/17/spring-cloud-config/index.html">
@@ -370,7 +370,7 @@
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <h2 id="一、现状说明"><a href="#一、现状说明" class="headerlink" title="一、现状说明"></a>一、现状说明</h2><p>由于项目基于 Spring Cloud 微服务架构，将业务拆分多个服务/应用，处于高可用和负载均衡的考虑，一个服务一般会部署多个实例。每个服务实例都需要进行配置，配置又需要区分多种环境，简单区分如 dev(本地开发)/test(测试环境)/prod(生产环境)，每个实例至少也需要维护三份配置，如果由人工进行各个环境各个服务实例配置的部署和维护，随着实例数量的增加，配置文件分散在各个环境的各个目录下，那么运维工作量的会很大，也容易出错，出现相同服务的不同实例配置不一致。<br>因此，考虑通过配置中心服务配置进行集中管理和维护，基于 Spring Cloud Config ，原则是部署环境应用零配置文件，由启动指令/脚本指定和加载不同环境的 profile。</p>
+        <h2 id="一、现状说明"><a href="#一、现状说明" class="headerlink" title="一、现状说明"></a>一、现状说明</h2><p>由于项目基于 Spring Cloud 微服务架构，将业务拆分多个服务/应用，处于高可用和负载均衡的考虑，每个服务会部署多个实例。每个服务实例都需要进行配置，配置又需要区分多种环境，简单区分如 dev(本地开发)/test(测试环境)/prod(生产环境)，每个实例至少也需要维护三份配置，如果由人工进行各个环境各个服务实例配置的部署和维护，随着实例数量的增加，配置文件分散在各个环境的各个目录下，那么运维工作量的会很大，也容易出错，出现相同服务的不同实例配置不一致的情况。<br>因此，考虑通过配置中心服务配置进行集中管理和维护，基于 Spring Cloud Config ，原则是部署环境应用零配置文件，由启动指令/脚本指定和加载不同环境的 profile。</p>
 <h2 id="二、实践过程"><a href="#二、实践过程" class="headerlink" title="二、实践过程"></a>二、实践过程</h2><h3 id="1-新建-git-仓库并分配相关账号权限"><a href="#1-新建-git-仓库并分配相关账号权限" class="headerlink" title="1. 新建 git 仓库并分配相关账号权限"></a>1. 新建 git 仓库并分配相关账号权限</h3><ul>
 <li>如 <a href="http://git.foo.com/bar/server-config-center" target="_blank" rel="noopener">http://git.foo.com/bar/server-config-center</a></li>
 </ul>
