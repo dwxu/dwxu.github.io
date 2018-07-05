@@ -2,23 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.dwxu.me/2018/06/17/spring-cloud-config/</loc>
+    <loc>http://www.dwxu.me/2018/06/07/MariaDB-Replication-Delay/</loc>
     
-    <lastmod>2018-06-19T10:03:05.318Z</lastmod>
+    <lastmod>2018-07-05T15:52:21.769Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.dwxu.me/2018/06/17/2018-father-day/</loc>
     
-    <lastmod>2018-06-16T20:10:21.714Z</lastmod>
+    <lastmod>2018-07-05T15:51:20.230Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.dwxu.me/2018/06/07/MariaDB-Replication-Delay/</loc>
+    <loc>http://www.dwxu.me/2018/05/14/Hello-World/</loc>
     
-    <lastmod>2018-06-07T16:28:36.831Z</lastmod>
+    <lastmod>2018-07-05T15:50:40.803Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.dwxu.me/2018/06/17/spring-cloud-config/</loc>
+    
+    <lastmod>2018-07-05T15:47:32.098Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.dwxu.me/2018/07/05/nginx-note/</loc>
+    
+    <lastmod>2018-07-05T15:46:56.927Z</lastmod>
     
   </url>
   
@@ -89,13 +103,6 @@
     <loc>http://www.dwxu.me/2018/05/15/search-engine-referer/</loc>
     
     <lastmod>2018-05-15T12:38:28.993Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.dwxu.me/2018/05/14/Hello-World/</loc>
-    
-    <lastmod>2018-05-14T15:32:08.106Z</lastmod>
     
   </url>
   
