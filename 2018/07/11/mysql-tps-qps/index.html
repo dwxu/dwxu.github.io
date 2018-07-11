@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Linux系统端口范围限制 | Dongwu Xu - Blog</title>
-  <meta name="description" content="最近参与的项目中，使用 Apche Storm 实时消费/处理 Kafka 消息，但提交执行 Topology 时，经常发现启动（各个工作节点正常工作）很久，查看工作节点的相关日志（${STORM_HOME}/logs/workers-artifacts/ 目录下），经常发现有大量以下错误日志在滚动输出：12018-05-24 15:30:00.453 o.a.s.m.n.Client [ERRO">
-<meta name="keywords" content="运维">
+  <title>MySQL TPS/QPS 计算 | Dongwu Xu - Blog</title>
+  <meta name="description" content="1. TPS = (COM_COMMIT + COM_ROLLBACK) / UPTIME12345use information_schema;select VARIABLE_VALUE into @num_commit from GLOBAL_STATUS where VARIABLE_NAME =&apos;COM_COMMIT&apos;;select VARIABLE_VALUE into @num_rol">
+<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux系统端口范围限制">
-<meta property="og:url" content="http://www.dwxu.me/2018/05/27/linux-port/index.html">
+<meta property="og:title" content="MySQL TPS&#x2F;QPS 计算">
+<meta property="og:url" content="http://www.dwxu.me/2018/07/11/mysql-tps-qps/index.html">
 <meta property="og:site_name" content="Dongwu Xu">
-<meta property="og:description" content="最近参与的项目中，使用 Apche Storm 实时消费/处理 Kafka 消息，但提交执行 Topology 时，经常发现启动（各个工作节点正常工作）很久，查看工作节点的相关日志（${STORM_HOME}/logs/workers-artifacts/ 目录下），经常发现有大量以下错误日志在滚动输出：12018-05-24 15:30:00.453 o.a.s.m.n.Client [ERRO">
+<meta property="og:description" content="1. TPS = (COM_COMMIT + COM_ROLLBACK) / UPTIME12345use information_schema;select VARIABLE_VALUE into @num_commit from GLOBAL_STATUS where VARIABLE_NAME =&apos;COM_COMMIT&apos;;select VARIABLE_VALUE into @num_rol">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-27T02:35:41.206Z">
+<meta property="og:updated_time" content="2018-07-11T13:48:35.079Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux系统端口范围限制">
-<meta name="twitter:description" content="最近参与的项目中，使用 Apche Storm 实时消费/处理 Kafka 消息，但提交执行 Topology 时，经常发现启动（各个工作节点正常工作）很久，查看工作节点的相关日志（${STORM_HOME}/logs/workers-artifacts/ 目录下），经常发现有大量以下错误日志在滚动输出：12018-05-24 15:30:00.453 o.a.s.m.n.Client [ERRO">
+<meta name="twitter:title" content="MySQL TPS&#x2F;QPS 计算">
+<meta name="twitter:description" content="1. TPS = (COM_COMMIT + COM_ROLLBACK) / UPTIME12345use information_schema;select VARIABLE_VALUE into @num_commit from GLOBAL_STATUS where VARIABLE_NAME =&apos;COM_COMMIT&apos;;select VARIABLE_VALUE into @num_rol">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://www.dwxu.me/2018/05/27/linux-port/index.html">
+  <link rel="canonical" href="http://www.dwxu.me/2018/07/11/mysql-tps-qps/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Dongwu Xu" type="application/atom+xml">
   
@@ -328,14 +328,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-linux-port" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-mysql-tps-qps" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Linux系统端口范围限制
+      MySQL TPS/QPS 计算
     </h1>
   
 
@@ -343,46 +343,44 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2018/05/27/linux-port/" class="article-date">
-	  <time datetime="2018-05-27T01:36:19.000Z" itemprop="datePublished">2018-05-27</time>
+	<a href="/2018/07/11/mysql-tps-qps/" class="article-date">
+	  <time datetime="2018-07-11T13:43:23.000Z" itemprop="datePublished">2018-07-11</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/运维/">运维</a>
+	<a class="article-tag-link" href="/tags/MySQL/">MySQL</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/05/27/linux-port/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/11/mysql-tps-qps/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <p>最近参与的项目中，使用 Apche Storm 实时消费/处理 Kafka 消息，但提交执行 Topology 时，经常发现启动（各个工作节点正常工作）很久，查看工作节点的相关日志（${STORM_HOME}/logs/workers-artifacts/ 目录下），经常发现有大量以下错误日志在滚动输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018-05-24 15:30:00.453 o.a.s.m.n.Client [ERROR] connection attempt 26 to Netty-Client-cdh5/xxx.xxx.xxx.xxx:6714 failed: java.net.ConnectException: Connection refused: cdh5/xxx.xxx.xxx.xxx:6714</span><br></pre></td></tr></table></figure></p>
-<p>从日志初步看，是工作进程尝试与其他工作进程进行通信建立连接时被拒绝，很大可能是工作进程还没有启动完成（监听相关端口，如上述日志中 cdh5 的 6714 端口）。<br><br><br>正常来说，程序监听空闲端口启动是很快的，除非是端口被占用了，一直在等待端口释放。我们的 Storm 集群中有多个工作节点共一个百多工作进程（worker），其中某些节点上的某些工作进程监听端口失败一直在重试，节点工作进程间通信失败，整个集群启动耗时很长甚至无法完成启动进行工作。<br><br><br>我们 Storm 的工作进程端口列表（${STORM_HOME}/conf/storm.yaml 配置 supervisor.slots.ports 指定）为  6700 - 6731，查看 Linux 系统预留源端口：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cat /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">1024 65000</span><br></pre></td></tr></table></figure></p>
-<p><br><br>系统预留了 1024 - 65000 端口作为服务端口，也就是说 TCP/IP协议栈会从 1024 - 65000 中随机选取端口作为源与其他服务建立连接进行通信，而我们 Strom 的工作进程端口列表正好包含在这个范围内，但程序停止时，释放的端口可能被占用了，导致下次启动异常，因此需要调整该配置：</p>
+        <h5 id="1-TPS-COM-COMMIT-COM-ROLLBACK-UPTIME"><a href="#1-TPS-COM-COMMIT-COM-ROLLBACK-UPTIME" class="headerlink" title="1. TPS = (COM_COMMIT + COM_ROLLBACK) / UPTIME"></a>1. TPS = (COM_COMMIT + COM_ROLLBACK) / UPTIME</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> information_schema;</span><br><span class="line"><span class="keyword">select</span> VARIABLE_VALUE <span class="keyword">into</span> @num_commit <span class="keyword">from</span> GLOBAL_STATUS <span class="keyword">where</span> VARIABLE_NAME =<span class="string">'COM_COMMIT'</span>;</span><br><span class="line"><span class="keyword">select</span> VARIABLE_VALUE <span class="keyword">into</span> @num_rollback <span class="keyword">from</span> GLOBAL_STATUS <span class="keyword">where</span> VARIABLE_NAME =<span class="string">'COM_ROLLBACK'</span>;</span><br><span class="line"><span class="keyword">select</span> VARIABLE_VALUE <span class="keyword">into</span> @uptime <span class="keyword">from</span> GLOBAL_STATUS <span class="keyword">where</span> VARIABLE_NAME =<span class="string">'UPTIME'</span>;</span><br><span class="line"><span class="keyword">select</span> (@num_commit+@num_rollback)/@uptime;</span><br></pre></td></tr></table></figure>
+<h5 id="2-QPS-QUESTIONS-UPTIME"><a href="#2-QPS-QUESTIONS-UPTIME" class="headerlink" title="2. QPS = QUESTIONS / UPTIME"></a>2. QPS = QUESTIONS / UPTIME</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> information_schema;</span><br><span class="line"><span class="keyword">select</span> VARIABLE_VALUE <span class="keyword">into</span> @num_question <span class="keyword">from</span> GLOBAL_STATUS <span class="keyword">where</span> VARIABLE_NAME =<span class="string">'QUESTIONS'</span>;</span><br><span class="line"><span class="keyword">select</span> VARIABLE_VALUE <span class="keyword">into</span> @uptime <span class="keyword">from</span> GLOBAL_STATUS <span class="keyword">where</span> VARIABLE_NAME =<span class="string">'UPTIME'</span>;</span><br><span class="line"><span class="keyword">select</span> @num_question/@uptime;</span><br></pre></td></tr></table></figure>
+<h5 id="3-其他"><a href="#3-其他" class="headerlink" title="3. 其他"></a>3. 其他</h5><p>MySQL5.7.6 版本开始废弃 information_schema.global_status，查询报错：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select VARIABLE_VALUE into @num_com from GLOBAL_STATUS where VARIABLE_NAME ='COM_COMMIT';</span><br><span class="line">ERROR 3167 (HY000): The 'INFORMATION_SCHEMA.GLOBAL_STATUS' feature is disabled; see the documentation for 'show_compatibility_56'</span><br></pre></td></tr></table></figure></p>
+<p>需要打开 show_compatibility_56（全局动态变量） 进行兼容：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set global show_compatibility_56 = on;</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure></p>
+<p>即可进行查询：</p>
 <ul>
-<li>修改 /etc/sysctl.conf 中 net.ipv4.ip_local_port_range 配置的范围，使其不包含我们需要的 6700 - 6731（如 6732 - 65000）；</li>
-<li>重启系统或者执行 <strong>sysctl -p</strong> 让配置生效；</li>
-<li>注意端口范围不要超过 1024 和 65535，1024 以下系统使用，65535 以上设置会会提示失败；</li>
+<li><p>TPS</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use information_schema;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; select VARIABLE_VALUE into @num_commit from GLOBAL_STATUS where VARIABLE_NAME ='COM_COMMIT';</span><br><span class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</span><br><span class="line">mysql&gt; select VARIABLE_VALUE into @num_rollback from GLOBAL_STATUS where VARIABLE_NAME ='COM_ROLLBACK';</span><br><span class="line">Query OK, 1 row affected, 1 warning (0.01 sec)</span><br><span class="line">mysql&gt; select VARIABLE_VALUE into @uptime from GLOBAL_STATUS where VARIABLE_NAME ='UPTIME';</span><br><span class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</span><br><span class="line">mysql&gt; select (@num_commit+@num_rollback)/@uptime;</span><br><span class="line">+<span class="comment">------------------------------+</span></span><br><span class="line">| (@num_commit+@num_rollback)/@uptime |</span><br><span class="line">+<span class="comment">------------------------------+</span></span><br><span class="line">|        0.0009026154801388166 |</span><br><span class="line">+<span class="comment">------------------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>QPS</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use information_schema;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; select VARIABLE_VALUE into @num_question from GLOBAL_STATUS where VARIABLE_NAME ='QUESTIONS';</span><br><span class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</span><br><span class="line">mysql&gt; select VARIABLE_VALUE into @uptime from GLOBAL_STATUS where VARIABLE_NAME ='UPTIME';</span><br><span class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</span><br><span class="line">mysql&gt; select @num_queries/@uptime;</span><br><span class="line">+<span class="comment">----------------------+</span></span><br><span class="line">| @num_question/@uptime |</span><br><span class="line">+<span class="comment">----------------------+</span></span><br><span class="line">| 0.010274969268188234 |</span><br><span class="line">+<span class="comment">----------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p><br><br>经过以上的操作，我们再次向 Strom 集群提交 Topology 后启动便很快了，另外从 Storm UI 监控界面上也发现消费速度有很大的提升（估计也跟端口开放/竞争有关）。</p>
-<p>另外，ip_local_port_range 是范围配置，以上修改使得系统可用端口量减少了，但服务器需要消耗大量端口号时可能会存在瓶颈。可与以下配置配合：</p>
-<ul>
-<li>ip_local_reserved_ports：TCP/IP协议栈从 ip_local_port_range 中随机选取源端口时，会排除ip_local_reserved_ports 中定义的端口，同样在 /etc/sysctl.conf 中配置；</li>
-</ul>
-<p>如以上修改按以下配置（不改动 ip_local_port_range ）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.ip_local_reserved_ports = 6700-6731</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> sysctl -p</span><br><span class="line">net.ipv4.ip_forward = 0</span><br><span class="line">net.ipv4.conf.default.rp_filter = 1</span><br><span class="line">net.ipv4.conf.default.accept_source_route = 0</span><br><span class="line">kernel.sysrq = 0</span><br><span class="line">kernel.core_uses_pid = 1</span><br><span class="line">net.ipv4.tcp_syncookies = 1</span><br><span class="line">kernel.msgmnb = 65536</span><br><span class="line">kernel.msgmax = 65536</span><br><span class="line">kernel.shmmax = 68719476736</span><br><span class="line">kernel.shmall = 4294967296</span><br><span class="line">net.ipv4.ip_local_reserved_ports = 6700-6731</span><br><span class="line"><span class="meta">#</span> cat /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">1024 65000</span><br><span class="line"><span class="meta">#</span> cat /proc/sys/net/ipv4/ip_local_reserved_ports</span><br><span class="line">6700-6731</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -412,13 +410,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2018/05/29/spring-cloud-session/" title="Spring Cloud 多服务/多实例 Session 共享"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2018/05/24/linux-iostat/" title="Linux系统使用 iostat 命令监视磁盘设备活动情况"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2018/07/05/nginx-note/" title="Nginx 使用笔记"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

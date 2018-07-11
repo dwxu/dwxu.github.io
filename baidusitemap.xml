@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.dwxu.me/2018/07/11/mysql-tps-qps/</loc>
+    <lastmod>2018-07-11T13:48:35.079Z</lastmod>
+    <data>
+        <display>
+        <title>MySQL TPS/QPS 计算</title>
+        <pubTime>2018-07-11T13:43:23.000Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://www.dwxu.me/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dwxu.me/2018/07/05/nginx-note/</loc>
     <lastmod>2018-07-05T15:55:44.584Z</lastmod>
     <data>
