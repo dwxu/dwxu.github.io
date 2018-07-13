@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.dwxu.me/about/index.html</loc>
+    
+    <lastmod>2018-07-13T13:31:39.979Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.dwxu.me/2018/07/11/mysql-tps-qps/</loc>
     
     <lastmod>2018-07-11T13:48:35.079Z</lastmod>
@@ -89,13 +96,6 @@
     <loc>http://www.dwxu.me/2018/05/19/java-generics/</loc>
     
     <lastmod>2018-05-22T14:46:07.196Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.dwxu.me/about/index.html</loc>
-    
-    <lastmod>2018-05-21T14:11:10.067Z</lastmod>
     
   </url>
   
